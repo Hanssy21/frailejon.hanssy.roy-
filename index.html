@@ -4,276 +4,599 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Frailejón Ernesto Pérez 🌿</title>
+  <meta
+    name="description"
+    content="Experiencia educativa interactiva sobre los páramos colombianos, el agua y los riesgos ambientales asociados al fracking."
+  >
+
+  <title>Ernesto Pérez — Guardián del Páramo</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="app">
+<div class="pagina">
 
-    <header class="header">
+  <!-- ==============================
+       CABECERA
+  =============================== -->
+
+  <header class="cabecera">
+
+    <div class="titulo">
+
+      <div class="logo-hojas">🌿</div>
 
       <div>
-        <h1>🌿 Frailejón Ernesto Pérez</h1>
-        <p id="subtitulo">
-          ¡Bienvenido al páramo colombiano!
-        </p>
+        <h1>Ernesto Pérez</h1>
+        <p>Guardián del páramo colombiano</p>
       </div>
 
-      <div class="agua-contador">
-        💧 <span id="agua">0</span>
-      </div>
+    </div>
 
-    </header>
+    <div class="agua">
 
+      💧 Agua protegida:
+      <strong id="contadorAgua">0</strong>
 
-    <main id="escenario">
+    </div>
 
-      <!-- CIELO -->
+  </header>
 
-      <div class="cielo"></div>
 
-      <div class="sol">☀️</div>
+  <!-- ==============================
+       PRESENTACIÓN
+  =============================== -->
 
-      <div class="luna">🌙</div>
+  <section class="intro">
 
-      <div class="estrellas">
-        ✦　✧　✦　　　✧　✦
-      </div>
+    <span class="etiqueta">🇨🇴 COLOMBIA</span>
 
+    <h2>
+      El páramo nos da agua.
+      <br>
+      <span>¡Tenemos que protegerlo!</span>
+    </h2>
 
-      <!-- NUBES -->
+    <p>
+      Explora el páramo con Ernesto y descubre por qué estos
+      ecosistemas son tan importantes para la vida.
+    </p>
 
-      <div class="nube nube1">☁️</div>
-      <div class="nube nube2">☁️</div>
+  </section>
 
 
-      <!-- MONTAÑAS -->
+  <!-- ==============================
+       ESCENARIO
+  =============================== -->
 
-      <div class="montana montana1"></div>
-      <div class="montana montana2"></div>
-      <div class="montana montana3"></div>
+  <main id="escenario">
 
+    <!-- CIELO -->
 
-      <!-- NIEBLA -->
+    <div class="cielo"></div>
 
-      <div class="niebla"></div>
+    <div class="sol">☀️</div>
 
+    <div class="luna">🌙</div>
 
-      <!-- MARIPOSAS -->
+    <div class="estrellas">
+      ✦ &nbsp; ✧ &nbsp; ✦ &nbsp;&nbsp;
+      ✧ &nbsp; ✦ &nbsp; ✧
+    </div>
 
-      <div class="mariposa mariposa1">🦋</div>
-      <div class="mariposa mariposa2">🦋</div>
 
+    <!-- NUBES -->
 
-      <!-- BURBUJA -->
+    <div class="nube nube1">☁️</div>
+    <div class="nube nube2">☁️</div>
 
-      <div id="burbuja">
-        ¡Hola! 🌿
-      </div>
 
+    <!-- MONTAÑAS -->
 
-      <!-- =====================
-           FRAILEJÓN
-      ====================== -->
+    <div class="montana montana-atras"></div>
+    <div class="montana montana-media"></div>
+    <div class="montana montana-frontal"></div>
 
-      <div id="frailejon">
 
+    <!-- LAGUNA -->
 
-        <!-- HOJAS TRASERAS -->
+    <div class="laguna">
 
-        <div class="hojas traseras">
+      <div class="reflejo"></div>
 
-          <div class="hoja h1"></div>
-          <div class="hoja h2"></div>
-          <div class="hoja h3"></div>
-          <div class="hoja h4"></div>
-          <div class="hoja h5"></div>
-          <div class="hoja h6"></div>
-          <div class="hoja h7"></div>
-          <div class="hoja h8"></div>
-
-        </div>
-
-
-        <!-- CABEZA -->
-
-        <div class="cabeza">
-
-          <div class="pelusa p1"></div>
-          <div class="pelusa p2"></div>
-          <div class="pelusa p3"></div>
-          <div class="pelusa p4"></div>
-          <div class="pelusa p5"></div>
-          <div class="pelusa p6"></div>
-
-
-          <!-- OJO IZQUIERDO -->
-
-          <div class="ojo ojo-izquierdo">
-            <div class="pupila"></div>
-          </div>
-
-
-          <!-- OJO DERECHO -->
-
-          <div class="ojo ojo-derecho">
-            <div class="pupila"></div>
-          </div>
-
-
-          <div class="mejilla izquierda"></div>
-          <div class="mejilla derecha"></div>
-
-
-          <div class="nariz"></div>
-
-
-          <div id="boca"></div>
-
-        </div>
-
-
-        <!-- CUERPO -->
-
-        <div class="cuerpo">
-
-
-          <!-- BRAZO IZQUIERDO -->
-
-          <div
-            id="brazoIzquierdo"
-            class="brazo brazo-izquierdo"
-          >
-
-            <div class="mano">
-              🌿
-            </div>
-
-          </div>
-
-
-          <!-- BRAZO DERECHO -->
-
-          <div
-            id="brazoDerecho"
-            class="brazo brazo-derecho"
-          >
-
-            <div class="mano">
-              🌿
-            </div>
-
-          </div>
-
-
-          <!-- TRONCO -->
-
-          <div class="tronco">
-
-            <div class="linea-tronco"></div>
-            <div class="linea-tronco linea2"></div>
-            <div class="linea-tronco linea3"></div>
-
-          </div>
-
-
-          <!-- PIERNAS -->
-
-          <div class="pierna pierna-izquierda"></div>
-          <div class="pierna pierna-derecha"></div>
-
-
-          <!-- ZAPATOS -->
-
-          <div class="zapato zapato-izquierdo"></div>
-          <div class="zapato zapato-derecho"></div>
-
-        </div>
-
-      </div>
-
-
-      <!-- SUELO -->
-
-      <div class="suelo">
-
-        <div class="plantas">
-          🌿 🌱 🌿 🌱 🌿 🌱 🌿 🌱 🌿
-        </div>
-
-      </div>
-
-
-      <!-- LLUVIA -->
-
-      <div id="lluvia"></div>
-
-
-      <!-- GOTAS DE AGUA -->
-
-      <div id="gotas"></div>
-
-
-    </main>
-
-
-    <!-- CONTROLES -->
-
-    <section class="controles">
-
-      <button id="btnSaludar">
-        👋 Saludar
-      </button>
-
-      <button id="btnHablar">
-        🗣️ Hablar
-      </button>
-
-      <button id="btnBailar">
-        💃 Bailar
-      </button>
-
-      <button id="btnCaminar">
-        🚶 Caminar
-      </button>
-
-      <button id="btnLluvia">
-        🌧️ Lluvia
-      </button>
-
-      <button id="btnNoche">
-        🌙 Noche
-      </button>
-
-      <button id="btnAgua">
-        💧 Buscar agua
-      </button>
-
-    </section>
-
-
-    <div class="mensaje">
-
-      <p id="mensaje">
-        ¡Ayuda a cuidar nuestros páramos!
-      </p>
+      <span>💧</span>
 
     </div>
 
 
-    <footer>
+    <!-- NIEBLA -->
 
-      🌱 Proyecto web inspirado en el páramo colombiano 🇨🇴
-
-    </footer>
-
-  </div>
+    <div class="niebla niebla1"></div>
+    <div class="niebla niebla2"></div>
 
 
-  <script src="script.js"></script>
+    <!-- AVES -->
+
+    <div class="aves">🕊️　　🕊️</div>
+
+
+    <!-- ==========================
+         BURBUJA DE ERNESTO
+    =========================== -->
+
+    <div id="dialogo" class="dialogo">
+
+      <strong>Ernesto Pérez</strong>
+
+      <span id="textoDialogo">
+        ¡Hola! Soy Ernesto. 🌿
+      </span>
+
+    </div>
+
+
+    <!-- ==========================
+         ERNESTO
+    =========================== -->
+
+    <div id="ernesto" class="ernesto">
+
+
+      <!-- CORONA DE HOJAS -->
+
+      <div class="corona">
+
+        <span>🌿</span>
+        <span>🌿</span>
+        <span>🌿</span>
+        <span>🌿</span>
+        <span>🌿</span>
+        <span>🌿</span>
+        <span>🌿</span>
+
+      </div>
+
+
+      <!-- CABEZA -->
+
+      <div class="cabeza">
+
+        <div class="pelusa pelusa1"></div>
+        <div class="pelusa pelusa2"></div>
+        <div class="pelusa pelusa3"></div>
+        <div class="pelusa pelusa4"></div>
+
+
+        <!-- CUATRO OJOS -->
+
+        <div class="ojo ojo1">
+          <span></span>
+        </div>
+
+        <div class="ojo ojo2">
+          <span></span>
+        </div>
+
+        <div class="ojo ojo3">
+          <span></span>
+        </div>
+
+        <div class="ojo ojo4">
+          <span></span>
+        </div>
+
+
+        <div class="nariz"></div>
+
+        <div class="boca"></div>
+
+        <div class="mejilla mejilla1"></div>
+        <div class="mejilla mejilla2"></div>
+
+      </div>
+
+
+      <!-- CUERPO -->
+
+      <div class="cuerpo">
+
+
+        <!-- BRAZO IZQUIERDO -->
+
+        <div class="brazo brazoIzquierdo">
+
+          <div class="mano">
+            🌿
+          </div>
+
+        </div>
+
+
+        <!-- BRAZO DERECHO -->
+
+        <div class="brazo brazoDerecho">
+
+          <div class="mano">
+            🌿
+          </div>
+
+        </div>
+
+
+        <!-- TRONCO -->
+
+        <div class="tronco">
+
+          <div></div>
+          <div></div>
+          <div></div>
+
+        </div>
+
+
+        <!-- PIERNAS -->
+
+        <div class="pierna pierna1"></div>
+        <div class="pierna pierna2"></div>
+
+
+        <!-- ZAPATOS -->
+
+        <div class="zapato zapato1"></div>
+        <div class="zapato zapato2"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==========================
+         VEGETACIÓN
+    =========================== -->
+
+    <div class="vegetacion">
+
+      🌱　🌿　🌱　🌿　🌱　🌿　🌱
+      🌿　🌱　🌿　🌱　🌿
+
+    </div>
+
+
+    <!-- ==========================
+         SUELO
+    =========================== -->
+
+    <div class="suelo"></div>
+
+
+    <!-- ==========================
+         SUBSUELO
+    =========================== -->
+
+    <section
+      id="subsuelo"
+      class="subsuelo"
+    >
+
+      <div class="capa tierra">
+        <span>🌎 Suelo del páramo</span>
+      </div>
+
+      <div class="capa aguaSubterranea">
+
+        <span>
+          💧 AGUA SUBTERRÁNEA
+        </span>
+
+        <div class="aguas">
+
+          💧　💧　💧　💧　💧　💧
+          💧　💧　💧　💧
+
+        </div>
+
+      </div>
+
+      <div class="capa roca">
+
+        <span>
+          🪨 ROCAS
+        </span>
+
+      </div>
+
+
+      <!-- POZO DE FRACKING -->
+
+      <div
+        id="pozo"
+        class="pozo"
+      >
+
+        <div class="torre">
+          🛢️
+        </div>
+
+        <div class="tuberia"></div>
+
+        <div class="fracturas">
+
+          <i></i>
+          <i></i>
+          <i></i>
+
+        </div>
+
+        <div class="alertaPozo">
+
+          ⚠️
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LLUVIA -->
+
+    <div
+      id="lluvia"
+      class="lluvia"
+    ></div>
+
+
+    <!-- CONTAMINACIÓN -->
+
+    <div
+      id="contaminacion"
+      class="contaminacion"
+    >
+
+      ⚠️
+
+    </div>
+
+
+  </main>
+
+
+  <!-- ==============================
+       MENÚ
+  =============================== -->
+
+  <nav class="menu">
+
+    <button id="btnParamo">
+      🏔️
+      <span>El páramo</span>
+    </button>
+
+    <button id="btnAgua">
+      💧
+      <span>El agua</span>
+    </button>
+
+    <button id="btnFracking">
+      🛢️
+      <span>La amenaza</span>
+    </button>
+
+    <button id="btnProteccion">
+      🛡️
+      <span>Proteger</span>
+    </button>
+
+  </nav>
+
+
+  <!-- ==============================
+       INFORMACIÓN
+  =============================== -->
+
+  <section
+    id="informacion"
+    class="informacion"
+  >
+
+    <div class="infoIcono">
+      🏔️
+    </div>
+
+    <div>
+
+      <h2 id="tituloInfo">
+        ¿Qué es un páramo?
+      </h2>
+
+      <p id="textoInfo">
+
+        Los páramos son ecosistemas de alta montaña
+        fundamentales para la regulación y provisión
+        de agua. Sus plantas, suelos y humedales
+        ayudan a almacenar y liberar agua lentamente.
+
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       ALERTA
+  =============================== -->
+
+  <section
+    id="alerta"
+    class="alerta"
+  >
+
+    <div class="alertaIcono">
+      ⚠️
+    </div>
+
+    <div>
+
+      <h2>
+        El páramo está en riesgo
+      </h2>
+
+      <p id="textoAlerta">
+
+        Algunas actividades de extracción de
+        hidrocarburos pueden generar riesgos
+        ambientales que deben prevenirse y controlarse.
+
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       CONTROLES
+  =============================== -->
+
+  <section class="controles">
+
+    <button id="btnHablar">
+      🗣️ Hablar con Ernesto
+    </button>
+
+    <button id="btnLluvia">
+      🌧️ Lluvia
+    </button>
+
+    <button id="btnNoche">
+      🌙 Noche
+    </button>
+
+    <button id="btnExplorar">
+      🔎 Explorar el subsuelo
+    </button>
+
+  </section>
+
+
+  <!-- ==============================
+       DATOS
+  =============================== -->
+
+  <section class="datos">
+
+    <h2>💧 ¿Por qué debemos cuidar el páramo?</h2>
+
+    <div class="tarjetas">
+
+      <article>
+
+        <div>💧</div>
+
+        <h3>Agua</h3>
+
+        <p>
+          Los páramos cumplen funciones importantes
+          en la regulación del agua.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <div>🌱</div>
+
+        <h3>Biodiversidad</h3>
+
+        <p>
+          Albergan plantas y animales adaptados
+          a las condiciones de alta montaña.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <div>🛡️</div>
+
+        <h3>Protección</h3>
+
+        <p>
+          Conservar estos ecosistemas ayuda a
+          mantener sus servicios ambientales.
+        </p>
+
+      </article>
+
+
+      <article class="tarjetaRiesgo">
+
+        <div>🛢️</div>
+
+        <h3>Fracking</h3>
+
+        <p>
+          El uso de agua, sustancias, infraestructura
+          y manejo de residuos asociados a esta
+          actividad generan preocupaciones ambientales
+          que deben ser evaluadas y controladas.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==============================
+       MENSAJE FINAL
+  =============================== -->
+
+  <section class="final">
+
+    <div class="finalErnesto">
+      🌿
+    </div>
+
+    <h2>
+      “El agua que nace en el páramo
+      es vida para todos.”
+    </h2>
+
+    <p>
+      Conocer nuestros ecosistemas es el primer
+      paso para protegerlos.
+    </p>
+
+    <button id="btnMensajeFinal">
+      🌿 ¡Proteger el páramo!
+    </button>
+
+  </section>
+
+
+  <footer>
+
+    <p>
+      🌿 Proyecto educativo sobre los páramos colombianos
+    </p>
+
+    <p>
+      Información ambiental presentada con fines educativos.
+    </p>
+
+  </footer>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>

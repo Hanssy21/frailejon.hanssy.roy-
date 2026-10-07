@@ -1,47 +1,59 @@
-// ==========================================
-// ELEMENTOS
-// ==========================================
-
-const app =
-  document.querySelector(".app");
+/* =========================================
+   ELEMENTOS
+========================================= */
 
 const escenario =
   document.getElementById("escenario");
 
-const frailejon =
-  document.getElementById("frailejon");
+const pagina =
+  document.querySelector(".pagina");
 
-const burbuja =
-  document.getElementById("burbuja");
+const ernesto =
+  document.getElementById("ernesto");
 
-const subtitulo =
-  document.getElementById("subtitulo");
+const dialogo =
+  document.getElementById("dialogo");
 
-const mensaje =
-  document.getElementById("mensaje");
+const textoDialogo =
+  document.getElementById("textoDialogo");
 
-const aguaTexto =
-  document.getElementById("agua");
+const contadorAgua =
+  document.getElementById("contadorAgua");
+
+const tituloInfo =
+  document.getElementById("tituloInfo");
+
+const textoInfo =
+  document.getElementById("textoInfo");
+
+const alerta =
+  document.getElementById("alerta");
+
+const textoAlerta =
+  document.getElementById("textoAlerta");
 
 const lluvia =
   document.getElementById("lluvia");
 
 
-// ==========================================
-// BOTONES
-// ==========================================
+/* =========================================
+   BOTONES
+========================================= */
 
-const btnSaludar =
-  document.getElementById("btnSaludar");
+const btnParamo =
+  document.getElementById("btnParamo");
+
+const btnAgua =
+  document.getElementById("btnAgua");
+
+const btnFracking =
+  document.getElementById("btnFracking");
+
+const btnProteccion =
+  document.getElementById("btnProteccion");
 
 const btnHablar =
   document.getElementById("btnHablar");
-
-const btnBailar =
-  document.getElementById("btnBailar");
-
-const btnCaminar =
-  document.getElementById("btnCaminar");
 
 const btnLluvia =
   document.getElementById("btnLluvia");
@@ -49,117 +61,43 @@ const btnLluvia =
 const btnNoche =
   document.getElementById("btnNoche");
 
-const btnAgua =
-  document.getElementById("btnAgua");
+const btnExplorar =
+  document.getElementById("btnExplorar");
+
+const btnMensajeFinal =
+  document.getElementById("btnMensajeFinal");
 
 
-// ==========================================
-// COMPROBAR ELEMENTOS
-// ==========================================
+/* =========================================
+   VARIABLES
+========================================= */
 
-const elementos = {
-
-  app,
-  escenario,
-  frailejon,
-  burbuja,
-  subtitulo,
-  mensaje,
-  aguaTexto,
-  lluvia,
-  btnSaludar,
-  btnHablar,
-  btnBailar,
-  btnCaminar,
-  btnLluvia,
-  btnNoche,
-  btnAgua
-
-};
-
-
-Object.entries(elementos)
-  .forEach(
-    ([nombre, elemento]) => {
-
-      if (!elemento) {
-
-        console.error(
-          `No existe el elemento: ${nombre}`
-        );
-
-      }
-
-    }
-  );
-
-
-// ==========================================
-// VARIABLES
-// ==========================================
-
-let puntos =
+let agua =
   0;
 
-let bailando =
-  false;
-
-let caminando =
+let amenaza =
   false;
 
 let noche =
   false;
 
-let lloviendo =
+let lluviaActiva =
+  false;
+
+let hablando =
   false;
 
 
-// ==========================================
-// FRASES
-// ==========================================
+/* =========================================
+   HABLAR
+========================================= */
 
-const frases = [
+function hablar(texto) {
 
-  "¡Hola! Soy Ernesto Pérez.",
+  textoDialogo.textContent =
+    texto;
 
-  "¡Bienvenido al páramo!",
-
-  "¡El agua es vida!",
-
-  "¡Cuidemos nuestros frailejones!",
-
-  "¡Los páramos son tesoros de Colombia!",
-
-  "¡Tenemos que proteger la naturaleza!",
-
-  "¡Qué bonito está nuestro páramo!",
-
-  "¡Vamos a cuidar el agua!",
-
-  "¡Un saludo verde para todos!"
-
-];
-
-
-// ==========================================
-// FUNCIÓN HABLAR
-// ==========================================
-
-function hablar(frase) {
-
-  if (!frase) return;
-
-
-  subtitulo.textContent =
-    frase;
-
-  mensaje.textContent =
-    frase;
-
-  burbuja.textContent =
-    frase;
-
-  burbuja.classList.add(
+  dialogo.classList.add(
     "visible"
   );
 
@@ -171,50 +109,38 @@ function hablar(frase) {
 
     speechSynthesis.cancel();
 
-
     const voz =
       new SpeechSynthesisUtterance(
-        frase
+        texto
       );
-
 
     voz.lang =
       "es-CO";
 
+    voz.rate =
+      .88;
+
     voz.pitch =
       1.15;
 
-    voz.rate =
-      0.9;
+    hablando =
+      true;
 
-    voz.volume =
-      1;
-
-
-    frailejon.classList.add(
+    ernesto.classList.add(
       "hablando"
     );
-
 
     voz.onend =
       () => {
 
-        frailejon.classList.remove(
+        hablando =
+          false;
+
+        ernesto.classList.remove(
           "hablando"
         );
 
       };
-
-
-    voz.onerror =
-      () => {
-
-        frailejon.classList.remove(
-          "hablando"
-        );
-
-      };
-
 
     speechSynthesis.speak(
       voz
@@ -225,197 +151,262 @@ function hablar(frase) {
 }
 
 
-// ==========================================
-// SALUDAR
-// ==========================================
+/* =========================================
+   INFORMACIÓN
+========================================= */
 
-btnSaludar.addEventListener(
+function mostrarInfo(
+  titulo,
+  texto,
+  icono = "🌿"
+) {
+
+  tituloInfo.textContent =
+    titulo;
+
+  textoInfo.textContent =
+    texto;
+
+  document.querySelector(
+    ".infoIcono"
+  ).textContent =
+    icono;
+
+}
+
+
+/* =========================================
+   PÁRAMO
+========================================= */
+
+btnParamo.addEventListener(
   "click",
   () => {
 
-    frailejon.classList.add(
-      "saludando"
+    mostrarInfo(
+
+      "🏔️ ¿Qué es un páramo?",
+
+      "Los páramos son ecosistemas de alta montaña. "
+      + "En Colombia son especialmente importantes "
+      + "por sus funciones ecológicas y por su relación "
+      + "con la regulación y provisión del agua.",
+
+      "🏔️"
+
+    );
+
+
+    alerta.classList.remove(
+      "activa"
     );
 
 
     hablar(
-      "¡Hola! ¡Qué alegría verte!"
-    );
-
-
-    setTimeout(
-      () => {
-
-        frailejon.classList.remove(
-          "saludando"
-        );
-
-      },
-      2200
+      "Los páramos son ecosistemas increíbles. "
+      + "¡Son fundamentales para el agua!"
     );
 
   }
 );
 
 
-// ==========================================
-// HABLAR
-// ==========================================
+/* =========================================
+   AGUA
+========================================= */
+
+btnAgua.addEventListener(
+  "click",
+  () => {
+
+    mostrarInfo(
+
+      "💧 El agua del páramo",
+
+      "El suelo, la vegetación, los humedales "
+      + "y otros componentes del páramo participan "
+      + "en procesos que ayudan a almacenar, regular "
+      + "y mantener el agua.",
+
+      "💧"
+
+    );
+
+
+    crearGotaAgua();
+
+
+    hablar(
+      "¡El agua es uno de los grandes tesoros "
+      + "de nuestros páramos!"
+    );
+
+  }
+);
+
+
+/* =========================================
+   FRACKING
+========================================= */
+
+btnFracking.addEventListener(
+  "click",
+  () => {
+
+    amenaza =
+      true;
+
+
+    escenario.classList.add(
+      "amenaza"
+    );
+
+
+    mostrarInfo(
+
+      "🛢️ ¿Por qué preocupa el fracking?",
+
+      "El fracking utiliza grandes cantidades de agua "
+      + "y requiere la inyección de fluidos a presión "
+      + "para fracturar determinadas formaciones rocosas. "
+      + "Su actividad también implica infraestructura, "
+      + "manejo de residuos y sustancias. Por eso existen "
+      + "preocupaciones sobre sus posibles impactos "
+      + "ambientales y sobre la necesidad de proteger "
+      + "las fuentes de agua y los ecosistemas.",
+
+      "🛢️"
+
+    );
+
+
+    textoAlerta.textContent =
+
+      "El páramo es un ecosistema especialmente "
+      + "valioso. Frente a actividades que puedan "
+      + "generar impactos sobre el agua, el suelo "
+      + "o la biodiversidad, la prevención, el "
+      + "control y la protección ambiental son fundamentales.";
+
+
+    alerta.style.display =
+      "flex";
+
+
+    hablar(
+
+      "¡Atención! El fracking puede generar "
+      + "riesgos ambientales que debemos conocer. "
+      + "El agua y los ecosistemas necesitan protección."
+
+    );
+
+
+    btnExplorar.textContent =
+      "🔎 Ver la amenaza bajo tierra";
+
+  }
+);
+
+
+/* =========================================
+   PROTECCIÓN
+========================================= */
+
+btnProteccion.addEventListener(
+  "click",
+  () => {
+
+    amenaza =
+      false;
+
+
+    escenario.classList.remove(
+      "amenaza"
+    );
+
+
+    escenario.classList.remove(
+      "explorando"
+    );
+
+
+    mostrarInfo(
+
+      "🛡️ Proteger el páramo",
+
+      "Proteger los páramos significa cuidar "
+      + "el agua, conservar la biodiversidad, "
+      + "evitar la degradación del ecosistema "
+      + "y tomar decisiones ambientales basadas "
+      + "en la prevención y la evidencia.",
+
+      "🛡️"
+
+    );
+
+
+    hablar(
+
+      "¡Muy bien! El páramo y el agua "
+      + "merecen nuestra protección."
+
+    );
+
+
+    btnExplorar.textContent =
+      "🔎 Explorar el subsuelo";
+
+  }
+);
+
+
+/* =========================================
+   HABLAR CON ERNESTO
+========================================= */
 
 btnHablar.addEventListener(
   "click",
   () => {
 
-    const indice =
-      Math.floor(
-        Math.random()
-        * frases.length
-      );
+    const mensajes = [
+
+      "¡Hola! Soy Ernesto Pérez.",
+
+      "¡Cuidemos nuestros páramos!",
+
+      "El agua es vida.",
+
+      "Los frailejones ayudan al ecosistema del páramo.",
+
+      "¡Colombia tiene unos ecosistemas maravillosos!",
+
+      "No olvidemos que proteger la naturaleza "
+      + "también significa proteger el agua."
+
+    ];
+
+
+    const aleatorio =
+      mensajes[
+        Math.floor(
+          Math.random()
+          * mensajes.length
+        )
+      ];
 
 
     hablar(
-      frases[indice]
+      aleatorio
     );
 
   }
 );
 
 
-// ==========================================
-// BAILAR
-// ==========================================
-
-btnBailar.addEventListener(
-  "click",
-  () => {
-
-    bailando =
-      !bailando;
-
-
-    if (bailando) {
-
-      frailejon.classList.add(
-        "bailando"
-      );
-
-      btnBailar.textContent =
-        "🛑 Parar baile";
-
-      hablar(
-        "¡Vamos a bailar!"
-      );
-
-    } else {
-
-      frailejon.classList.remove(
-        "bailando"
-      );
-
-      btnBailar.textContent =
-        "💃 Bailar";
-
-      hablar(
-        "¡Eso estuvo divertido!"
-      );
-
-    }
-
-  }
-);
-
-
-// ==========================================
-// CAMINAR
-// ==========================================
-
-btnCaminar.addEventListener(
-  "click",
-  () => {
-
-    caminando =
-      !caminando;
-
-
-    if (caminando) {
-
-      frailejon.classList.add(
-        "caminando"
-      );
-
-      btnCaminar.textContent =
-        "🛑 Parar";
-
-      hablar(
-        "¡Vamos a explorar el páramo!"
-      );
-
-    } else {
-
-      frailejon.classList.remove(
-        "caminando"
-      );
-
-      btnCaminar.textContent =
-        "🚶 Caminar";
-
-      hablar(
-        "¡Qué hermoso lugar!"
-      );
-
-    }
-
-  }
-);
-
-
-// ==========================================
-// DÍA / NOCHE
-// ==========================================
-
-btnNoche.addEventListener(
-  "click",
-  () => {
-
-    noche =
-      !noche;
-
-
-    if (noche) {
-
-      app.classList.add(
-        "noche"
-      );
-
-      btnNoche.textContent =
-        "☀️ Día";
-
-      hablar(
-        "¡Llegó la noche al páramo!"
-      );
-
-    } else {
-
-      app.classList.remove(
-        "noche"
-      );
-
-      btnNoche.textContent =
-        "🌙 Noche";
-
-      hablar(
-        "¡Ha salido el sol!"
-      );
-
-    }
-
-  }
-);
-
-
-// ==========================================
-// CREAR LLUVIA
-// ==========================================
+/* =========================================
+   CREAR LLUVIA
+========================================= */
 
 function prepararLluvia() {
 
@@ -431,12 +422,11 @@ function prepararLluvia() {
 
     const gota =
       document.createElement(
-        "div"
+        "span"
       );
 
-
     gota.className =
-      "gota-lluvia";
+      "gota";
 
 
     gota.style.left =
@@ -469,42 +459,40 @@ function prepararLluvia() {
 prepararLluvia();
 
 
-// ==========================================
-// BOTÓN LLUVIA
-// ==========================================
+/* =========================================
+   LLUVIA
+========================================= */
 
 btnLluvia.addEventListener(
   "click",
   () => {
 
-    lloviendo =
-      !lloviendo;
+    lluviaActiva =
+      !lluviaActiva;
 
 
-    if (lloviendo) {
+    lluvia.classList.toggle(
+      "activa",
+      lluviaActiva
+    );
 
-      lluvia.classList.add(
-        "activa"
-      );
 
-      btnLluvia.textContent =
-        "☀️ Parar lluvia";
+    btnLluvia.textContent =
+      lluviaActiva
+        ? "☀️ Parar lluvia"
+        : "🌧️ Lluvia";
+
+
+    if (lluviaActiva) {
 
       hablar(
-        "¡Está lloviendo! El páramo recibe agua."
+        "¡Está lloviendo en el páramo!"
       );
 
     } else {
 
-      lluvia.classList.remove(
-        "activa"
-      );
-
-      btnLluvia.textContent =
-        "🌧️ Lluvia";
-
       hablar(
-        "La lluvia terminó."
+        "La lluvia ha terminado."
       );
 
     }
@@ -513,33 +501,141 @@ btnLluvia.addEventListener(
 );
 
 
-// ==========================================
-// CREAR GOTA DE AGUA
-// ==========================================
+/* =========================================
+   NOCHE
+========================================= */
 
-function crearGota() {
+btnNoche.addEventListener(
+  "click",
+  () => {
 
-  const gota =
-    document.createElement(
-      "div"
+    noche =
+      !noche;
+
+
+    pagina.classList.toggle(
+      "noche",
+      noche
     );
 
 
-  gota.className =
-    "gota-agua";
+    btnNoche.textContent =
+      noche
+        ? "☀️ Día"
+        : "🌙 Noche";
+
+
+    hablar(
+
+      noche
+        ? "La noche llega al páramo."
+        : "¡Ha vuelto el día!"
+
+    );
+
+  }
+);
+
+
+/* =========================================
+   EXPLORAR SUBSUELO
+========================================= */
+
+btnExplorar.addEventListener(
+  "click",
+  () => {
+
+    const abierto =
+      escenario.classList.toggle(
+        "explorando"
+      );
+
+
+    if (abierto) {
+
+      btnExplorar.textContent =
+        "⬆️ Ocultar subsuelo";
+
+
+      if (amenaza) {
+
+        hablar(
+
+          "Aquí puedes observar por qué "
+          + "la protección del agua subterránea "
+          + "es una preocupación ambiental."
+
+        );
+
+      } else {
+
+        hablar(
+
+          "Mira bajo nuestros pies. "
+          + "El suelo y el agua también forman "
+          + "parte del ecosistema."
+
+        );
+
+      }
+
+    } else {
+
+      btnExplorar.textContent =
+        amenaza
+          ? "🔎 Ver la amenaza bajo tierra"
+          : "🔎 Explorar el subsuelo";
+
+    }
+
+  }
+);
+
+
+/* =========================================
+   GOTAS DE AGUA
+========================================= */
+
+function crearGotaAgua() {
+
+  const gota =
+    document.createElement(
+      "button"
+    );
+
 
   gota.textContent =
     "💧";
 
+  gota.className =
+    "gotaInteractiva";
+
+
+  gota.style.position =
+    "absolute";
+
+  gota.style.zIndex =
+    "200";
 
   gota.style.left =
     (10 + Math.random() * 80)
     + "%";
 
-
   gota.style.top =
-    (20 + Math.random() * 55)
+    (20 + Math.random() * 45)
     + "%";
+
+  gota.style.border =
+    "0";
+
+  gota.style.background =
+    "transparent";
+
+  gota.style.fontSize =
+    "35px";
+
+  gota.style.cursor =
+    "pointer";
 
 
   escenario.appendChild(
@@ -551,21 +647,33 @@ function crearGota() {
     "click",
     () => {
 
-      puntos++;
+      agua++;
 
-      aguaTexto.textContent =
-        puntos;
-
-      mensaje.textContent =
-        "💧 ¡Encontraste agua!";
+      contadorAgua.textContent =
+        agua;
 
 
       gota.remove();
 
 
       hablar(
-        "¡Muy bien! Encontraste agua."
+        "¡Encontraste agua! 💧"
       );
+
+
+      if (
+        agua >= 5
+      ) {
+
+        hablar(
+
+          "¡Excelente! "
+          + "Has encontrado cinco gotas. "
+          + "¡Ahora eres un guardián del agua!"
+
+        );
+
+      }
 
     }
   );
@@ -583,72 +691,97 @@ function crearGota() {
       }
 
     },
-    7000
+    8000
   );
 
 }
 
 
-// ==========================================
-// BOTÓN AGUA
-// ==========================================
+/* =========================================
+   PARPADEO
+========================================= */
 
-btnAgua.addEventListener(
+setInterval(
+  () => {
+
+    ernesto.classList.add(
+      "parpadeando"
+    );
+
+
+    setTimeout(
+      () => {
+
+        ernesto.classList.remove(
+          "parpadeando"
+        );
+
+      },
+      180
+    );
+
+  },
+  3500
+);
+
+
+/* =========================================
+   MENSAJE FINAL
+========================================= */
+
+btnMensajeFinal.addEventListener(
   "click",
   () => {
 
-    crearGota();
+    agua += 3;
+
+    contadorAgua.textContent =
+      agua;
 
 
-    mensaje.textContent =
-      "💧 ¡Busca la gota azul y haz clic sobre ella!";
+    hablar(
+
+      "¡Gracias por ayudar a proteger "
+      + "el páramo! 🌿💧🇨🇴"
+
+    );
+
+
+    document.querySelector(
+      ".final"
+    ).style.transform =
+      "scale(1.02)";
+
+    setTimeout(
+      () => {
+
+        document.querySelector(
+          ".final"
+        ).style.transform =
+          "";
+
+      },
+      300
+    );
 
   }
 );
 
 
-// ==========================================
-// PARPADEO AUTOMÁTICO
-// ==========================================
-
-function parpadear() {
-
-  frailejon.classList.add(
-    "parpadeando"
-  );
-
-
-  setTimeout(
-    () => {
-
-      frailejon.classList.remove(
-        "parpadeando"
-      );
-
-    },
-    180
-  );
-
-}
-
-
-setInterval(
-  parpadear,
-  3500
-);
-
-
-// ==========================================
-// MENSAJE INICIAL
-// ==========================================
+/* =========================================
+   MENSAJE INICIAL
+========================================= */
 
 setTimeout(
   () => {
 
     hablar(
-      "¡Hola! Soy Ernesto. ¡Bienvenido al páramo!"
+
+      "¡Hola! Soy Ernesto Pérez. "
+      + "¡Bienvenido al páramo!"
+
     );
 
   },
-  800
+  1000
 );

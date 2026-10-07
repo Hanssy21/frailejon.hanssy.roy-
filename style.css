@@ -2,125 +2,213 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+
+  margin: 0;
 
   font-family:
     Arial,
     Helvetica,
     sans-serif;
 
+  color: #173b2a;
+
   background:
     linear-gradient(
-      #c9edf5,
-      #e5f4df
+      180deg,
+      #dff5ee,
+      #f5f0d8
     );
-
-  color: #174c35;
 
   overflow-x: hidden;
 }
 
 
-.app {
+/* =====================================
+   PÁGINA
+===================================== */
 
-  width: min(
-    1200px,
-    96%
-  );
+.pagina {
 
-  margin: auto;
+  width:
+    min(1200px, 96%);
 
-  padding:
-    20px 0 30px;
+  margin:
+    auto;
+
 }
 
 
-/* ==========================
+/* =====================================
    CABECERA
-========================== */
+===================================== */
 
-.header {
+.cabecera {
 
-  display: flex;
-
-  justify-content:
-    space-between;
+  display:
+    flex;
 
   align-items:
     center;
 
-  gap: 20px;
+  justify-content:
+    space-between;
 
-  margin-bottom:
+  gap:
+    20px;
+
+  padding:
+    20px 0;
+}
+
+
+.titulo {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
     15px;
 }
 
 
-.header h1 {
-
-  margin: 0;
+.logo-hojas {
 
   font-size:
-    clamp(
-      2rem,
-      5vw,
-      3.8rem
-    );
+    55px;
 
-  color:
-    #174c35;
 }
 
 
-.header p {
+.cabecera h1 {
 
   margin:
-    5px 0 0;
+    0;
 
   font-size:
-    1.15rem;
+    clamp(2rem, 5vw, 3.5rem);
+
+  color:
+    #245d3a;
+
 }
 
 
-.agua-contador {
+.cabecera p {
+
+  margin:
+    4px 0;
+
+}
+
+
+.agua {
+
+  padding:
+    12px 18px;
 
   background:
     white;
 
   border:
-    3px solid #39805b;
+    3px solid #4e9b76;
 
   border-radius:
-    18px;
+    20px;
 
-  padding:
-    10px 18px;
+  box-shadow:
+    0 8px 20px #0002;
 
   font-size:
-    1.3rem;
+    1.1rem;
+
+}
+
+
+/* =====================================
+   INTRO
+===================================== */
+
+.intro {
+
+  text-align:
+    center;
+
+  padding:
+    25px 10px 30px;
+
+}
+
+
+.etiqueta {
+
+  display:
+    inline-block;
+
+  padding:
+    7px 14px;
+
+  border-radius:
+    30px;
+
+  background:
+    #245d3a;
+
+  color:
+    white;
 
   font-weight:
     bold;
 
-  box-shadow:
-    0 5px 15px #0002;
-
-  white-space:
-    nowrap;
 }
 
 
-/* ==========================
+.intro h2 {
+
+  font-size:
+    clamp(2rem, 5vw, 4rem);
+
+  margin:
+    15px 0;
+
+}
+
+
+.intro h2 span {
+
+  color:
+    #238553;
+
+}
+
+
+.intro p {
+
+  max-width:
+    700px;
+
+  margin:
+    auto;
+
+  font-size:
+    1.15rem;
+
+  line-height:
+    1.6;
+
+}
+
+
+/* =====================================
    ESCENARIO
-========================== */
+===================================== */
 
 #escenario {
 
@@ -131,23 +219,26 @@ body {
     100%;
 
   height:
-    650px;
+    680px;
 
   overflow:
     hidden;
 
   border-radius:
-    30px;
+    35px;
 
   background:
-    #8bd2ec;
+    #8bd3e8;
 
   box-shadow:
-    0 20px 40px #174c3540;
+    0 25px 50px #153e2d55;
+
 }
 
 
-/* CIELO */
+/* =====================================
+   CIELO
+===================================== */
 
 .cielo {
 
@@ -159,20 +250,17 @@ body {
 
   background:
     linear-gradient(
-      #73c7e8 0%,
-      #bfe7db 60%,
-      #709c64 60%,
-      #416d46 100%
+      #6fc8e7 0%,
+      #c7e9dd 58%,
+      #83a86c 58%,
+      #456d48 100%
     );
 
   transition:
-    background 1s;
+    1s;
+
 }
 
-
-/* ==========================
-   SOL
-========================== */
 
 .sol {
 
@@ -180,38 +268,35 @@ body {
     absolute;
 
   z-index:
-    3;
-
-  top:
-    30px;
+    4;
 
   right:
     50px;
 
+  top:
+    30px;
+
   font-size:
-    70px;
+    75px;
 
   animation:
-    flotarSol 5s
-    ease-in-out
-    infinite
-    alternate;
+    sol 5s infinite alternate;
+
 }
 
 
-@keyframes flotarSol {
+@keyframes sol {
 
   to {
+
     transform:
-      translateY(15px);
+      translateY(15px)
+      rotate(8deg);
+
   }
 
 }
 
-
-/* ==========================
-   LUNA
-========================== */
 
 .luna {
 
@@ -219,13 +304,13 @@ body {
     absolute;
 
   z-index:
-    4;
-
-  top:
-    35px;
+    5;
 
   right:
     55px;
+
+  top:
+    35px;
 
   font-size:
     65px;
@@ -234,7 +319,8 @@ body {
     0;
 
   transition:
-    opacity 1s;
+    1s;
+
 }
 
 
@@ -244,10 +330,10 @@ body {
     absolute;
 
   z-index:
-    2;
+    3;
 
   top:
-    40px;
+    35px;
 
   left:
     10%;
@@ -264,14 +350,12 @@ body {
   opacity:
     0;
 
-  transition:
-    opacity 1s;
 }
 
 
-/* ==========================
+/* =====================================
    NUBES
-========================== */
+===================================== */
 
 .nube {
 
@@ -279,20 +363,17 @@ body {
     absolute;
 
   z-index:
-    5;
+    6;
 
   font-size:
     70px;
 
   opacity:
-    .8;
+    .75;
 
   animation:
-    nubeMovimiento
-    15s
-    ease-in-out
-    infinite
-    alternate;
+    nube 18s infinite alternate ease-in-out;
+
 }
 
 
@@ -302,38 +383,40 @@ body {
     45px;
 
   left:
-    40px;
+    30px;
+
 }
 
 
 .nube2 {
 
   top:
-    100px;
+    110px;
 
   left:
     55%;
 
   animation-delay:
-    -5s;
+    -7s;
+
 }
 
 
-@keyframes nubeMovimiento {
+@keyframes nube {
 
   to {
 
     transform:
-      translateX(90px);
+      translateX(100px);
 
   }
 
 }
 
 
-/* ==========================
+/* =====================================
    MONTAÑAS
-========================== */
+===================================== */
 
 .montana {
 
@@ -341,7 +424,7 @@ body {
     absolute;
 
   bottom:
-    110px;
+    145px;
 
   width:
     0;
@@ -350,53 +433,122 @@ body {
     0;
 
   border-left:
-    300px solid transparent;
+    320px solid transparent;
 
   border-right:
-    300px solid transparent;
+    320px solid transparent;
 
 }
 
 
-.montana1 {
+.montana-atras {
 
   left:
     -180px;
 
   border-bottom:
-    330px solid #729779;
+    350px solid #88a990;
+
 }
 
 
-.montana2 {
+.montana-media {
 
   right:
     -170px;
 
   border-bottom:
-    360px solid #5d8862;
+    390px solid #668d6b;
+
 }
 
 
-.montana3 {
+.montana-frontal {
 
   left:
     30%;
 
   border-left-width:
-    330px;
+    360px;
 
   border-right-width:
-    330px;
+    360px;
 
   border-bottom:
-    280px solid #4e7c55;
+    300px solid #507956;
+
 }
 
 
-/* ==========================
+/* =====================================
+   LAGUNA
+===================================== */
+
+.laguna {
+
+  position:
+    absolute;
+
+  z-index:
+    12;
+
+  bottom:
+    90px;
+
+  left:
+    7%;
+
+  width:
+    250px;
+
+  height:
+    70px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      #aeeef0,
+      #388ca1
+    );
+
+  box-shadow:
+    0 8px 20px #123c4055;
+
+  text-align:
+    center;
+
+  padding-top:
+    15px;
+
+}
+
+
+.laguna span {
+
+  animation:
+    gota 2s infinite alternate;
+
+}
+
+
+@keyframes gota {
+
+  to {
+
+    transform:
+      translateY(-7px);
+
+  }
+
+}
+
+
+/* =====================================
    NIEBLA
-========================== */
+===================================== */
 
 .niebla {
 
@@ -404,13 +556,10 @@ body {
     absolute;
 
   z-index:
-    9;
+    13;
 
   left:
     -10%;
-
-  bottom:
-    150px;
 
   width:
     120%;
@@ -427,123 +576,105 @@ body {
     );
 
   filter:
-    blur(18px);
+    blur(20px);
 
   animation:
-    moverNiebla
-    8s
-    ease-in-out
-    infinite
-    alternate;
+    niebla 8s infinite alternate ease-in-out;
+
 }
 
 
-@keyframes moverNiebla {
+.niebla1 {
+
+  bottom:
+    230px;
+
+}
+
+
+.niebla2 {
+
+  bottom:
+    310px;
+
+  animation-delay:
+    -4s;
+
+}
+
+
+@keyframes niebla {
 
   to {
+
     transform:
-      translateX(7%);
+      translateX(8%);
+
   }
 
 }
 
 
-/* ==========================
-   MARIPOSAS
-========================== */
+/* =====================================
+   AVES
+===================================== */
 
-.mariposa {
+.aves {
 
   position:
     absolute;
 
   z-index:
-    25;
+    15;
+
+  top:
+    180px;
+
+  left:
+    15%;
 
   font-size:
     28px;
 
   animation:
-    volar
-    7s
-    ease-in-out
-    infinite;
+    aves 8s infinite alternate;
+
 }
 
 
-.mariposa1 {
+@keyframes aves {
 
-  top:
-    42%;
+  to {
 
-  left:
-    12%;
-}
-
-
-.mariposa2 {
-
-  top:
-    35%;
-
-  right:
-    13%;
-
-  animation-delay:
-    -3s;
-}
-
-
-@keyframes volar {
-
-  0% {
     transform:
-      translate(0,0);
-  }
+      translateX(250px)
+      translateY(-30px);
 
-  25% {
-    transform:
-      translate(50px,-40px);
-  }
-
-  50% {
-    transform:
-      translate(100px,10px);
-  }
-
-  75% {
-    transform:
-      translate(30px,60px);
-  }
-
-  100% {
-    transform:
-      translate(0,0);
   }
 
 }
 
 
-/* ==========================
-   FRAILEJÓN
-========================== */
+/* =====================================
+   ERNESTO
+===================================== */
 
-#frailejon {
+.ernesto {
 
   position:
     absolute;
 
   z-index:
-    20;
+    40;
 
   left:
     50%;
 
   bottom:
-    80px;
+    100px;
 
   width:
-    280px;
+    300px;
 
   height:
     500px;
@@ -553,114 +684,11 @@ body {
 
   transform-origin:
     bottom center;
+
 }
 
 
-/* ==========================
-   HOJAS
-========================== */
-
-.hojas {
-
-  position:
-    absolute;
-
-  top:
-    0;
-
-  left:
-    0;
-
-  width:
-    280px;
-
-  height:
-    250px;
-}
-
-
-.hoja {
-
-  position:
-    absolute;
-
-  left:
-    115px;
-
-  bottom:
-    45px;
-
-  width:
-    52px;
-
-  height:
-    190px;
-
-  border-radius:
-    60% 60% 20% 20%;
-
-  border:
-    4px solid #52724a;
-
-  background:
-    linear-gradient(
-      90deg,
-      #668658,
-      #a9bf82,
-      #718f60
-    );
-
-  box-shadow:
-    inset 4px 0 8px #ffffff55;
-}
-
-
-.h1 {
-  transform:
-    rotate(-72deg);
-}
-
-.h2 {
-  transform:
-    rotate(-58deg);
-}
-
-.h3 {
-  transform:
-    rotate(-44deg);
-}
-
-.h4 {
-  transform:
-    rotate(-30deg);
-}
-
-.h5 {
-  transform:
-    rotate(-15deg);
-}
-
-.h6 {
-  transform:
-    rotate(15deg);
-}
-
-.h7 {
-  transform:
-    rotate(30deg);
-}
-
-.h8 {
-  transform:
-    rotate(45deg);
-}
-
-
-/* ==========================
-   CABEZA
-========================== */
-
-.cabeza {
+.corona {
 
   position:
     absolute;
@@ -669,37 +697,123 @@ body {
     5;
 
   top:
-    115px;
+    0;
 
   left:
-    37px;
+    25px;
 
   width:
-    206px;
+    250px;
 
   height:
-    180px;
+    130px;
+
+}
+
+
+.corona span {
+
+  position:
+    absolute;
+
+  font-size:
+    60px;
+
+  filter:
+    saturate(.8);
+
+}
+
+
+.corona span:nth-child(1) {
+  left: 0;
+  top: 40px;
+  transform: rotate(-55deg);
+}
+
+.corona span:nth-child(2) {
+  left: 35px;
+  top: 15px;
+  transform: rotate(-35deg);
+}
+
+.corona span:nth-child(3) {
+  left: 75px;
+  top: 0;
+  transform: rotate(-15deg);
+}
+
+.corona span:nth-child(4) {
+  left: 110px;
+  top: -5px;
+}
+
+.corona span:nth-child(5) {
+  left: 145px;
+  top: 0;
+  transform: rotate(15deg);
+}
+
+.corona span:nth-child(6) {
+  left: 180px;
+  top: 15px;
+  transform: rotate(35deg);
+}
+
+.corona span:nth-child(7) {
+  left: 215px;
+  top: 40px;
+  transform: rotate(55deg);
+}
+
+
+/* =====================================
+   CABEZA DE ERNESTO
+===================================== */
+
+.cabeza {
+
+  position:
+    absolute;
+
+  z-index:
+    10;
+
+  top:
+    90px;
+
+  left:
+    45px;
+
+  width:
+    210px;
+
+  height:
+    185px;
+
+  border:
+    6px solid #6e613d;
 
   border-radius:
-    48%;
+    47%;
 
   background:
     radial-gradient(
       circle at 50% 35%,
-      #e2efb3,
-      #b6cc88 65%,
-      #839d63
+      #d6bd70,
+      #a68d4e 70%,
+      #756536
     );
 
-  border:
-    6px solid #557447;
-
   box-shadow:
-    0 8px 15px #0003;
+    0 10px 20px #0004;
+
 }
 
 
-/* PELUSA */
+/* =====================================
+   PELUSA
+===================================== */
 
 .pelusa {
 
@@ -707,56 +821,47 @@ body {
     absolute;
 
   width:
-    38px;
+    45px;
 
   height:
-    38px;
+    45px;
 
   border-radius:
     50%;
 
   background:
-    #9eb979;
+    #c7b26a;
 
   border:
-    4px solid #5c794e;
+    4px solid #76663a;
+
 }
 
 
-.p1 {
-  top: -15px;
-  left: 15px;
-}
-
-.p2 {
+.pelusa1 {
   top: -25px;
-  left: 50px;
+  left: 20px;
 }
 
-.p3 {
+.pelusa2 {
   top: -30px;
-  left: 85px;
+  left: 80px;
 }
 
-.p4 {
+.pelusa3 {
   top: -25px;
-  right: 50px;
+  right: 20px;
 }
 
-.p5 {
-  top: -12px;
-  right: 15px;
-}
-
-.p6 {
+.pelusa4 {
   top: 5px;
-  left: 85px;
+  left: 82px;
 }
 
 
-/* ==========================
-   OJOS
-========================== */
+/* =====================================
+   CUATRO OJOS
+===================================== */
 
 .ojo {
 
@@ -767,63 +872,50 @@ body {
     65px;
 
   width:
-    42px;
+    38px;
 
   height:
-    55px;
+    50px;
+
+  border:
+    5px solid #554a2f;
 
   border-radius:
     50%;
 
   background:
-    #f8fae8;
+    #fffbea;
 
-  border:
-    5px solid #506945;
-
-  overflow:
-    hidden;
 }
 
 
-.ojo-izquierdo {
-  left:
-    38px;
-}
-
-
-.ojo-derecho {
-  right:
-    38px;
-}
-
-
-.pupila {
+.ojo span {
 
   position:
     absolute;
 
   left:
-    9px;
+    8px;
 
   top:
-    13px;
+    11px;
 
   width:
-    20px;
+    18px;
 
   height:
-    28px;
+    25px;
 
   border-radius:
     50%;
 
   background:
-    #243228;
+    #282821;
+
 }
 
 
-.pupila::after {
+.ojo span::after {
 
   content:
     "";
@@ -848,70 +940,30 @@ body {
 
   background:
     white;
-}
-
-
-/* PARPADEO */
-
-#frailejon.parpadeando .ojo {
-
-  animation:
-    parpadeo
-    .16s
-    linear;
-}
-
-
-@keyframes parpadeo {
-
-  50% {
-    transform:
-      scaleY(.08);
-  }
 
 }
 
 
-/* ==========================
+.ojo1 {
+  left: 15px;
+}
+
+.ojo2 {
+  left: 62px;
+}
+
+.ojo3 {
+  right: 62px;
+}
+
+.ojo4 {
+  right: 15px;
+}
+
+
+/* =====================================
    CARA
-========================== */
-
-.mejilla {
-
-  position:
-    absolute;
-
-  top:
-    125px;
-
-  width:
-    25px;
-
-  height:
-    15px;
-
-  border-radius:
-    50%;
-
-  background:
-    #e78d7b;
-
-  opacity:
-    .5;
-}
-
-
-.mejilla.izquierda {
-  left:
-    20px;
-}
-
-
-.mejilla.derecha {
-  right:
-    20px;
-}
-
+===================================== */
 
 .nariz {
 
@@ -919,13 +971,13 @@ body {
     absolute;
 
   top:
-    112px;
+    115px;
 
   left:
     91px;
 
   width:
-    25px;
+    27px;
 
   height:
     22px;
@@ -934,14 +986,15 @@ body {
     50%;
 
   background:
-    #b6cc87;
+    #b59a57;
 
   border:
-    3px solid #708952;
+    3px solid #746039;
+
 }
 
 
-#boca {
+.boca {
 
   position:
     absolute;
@@ -950,58 +1003,61 @@ body {
     145px;
 
   left:
-    65px;
+    67px;
 
   width:
-    76px;
+    75px;
 
   height:
-    25px;
+    28px;
 
   border-bottom:
-    7px solid #56372c;
+    7px solid #4a2c23;
 
   border-radius:
     0 0 50px 50px;
+
 }
 
 
-#frailejon.hablando #boca {
+.mejilla {
+
+  position:
+    absolute;
+
+  top:
+    130px;
+
+  width:
+    25px;
 
   height:
-    35px;
+    13px;
+
+  border-radius:
+    50%;
 
   background:
-    #562b25;
+    #db7568;
 
-  border:
-    4px solid #3d211d;
-
-  animation:
-    hablarBoca
-    .18s
-    infinite alternate;
-}
-
-
-@keyframes hablarBoca {
-
-  from {
-    transform:
-      scaleY(.45);
-  }
-
-  to {
-    transform:
-      scaleY(1);
-  }
+  opacity:
+    .55;
 
 }
 
 
-/* ==========================
+.mejilla1 {
+  left: 20px;
+}
+
+.mejilla2 {
+  right: 20px;
+}
+
+
+/* =====================================
    CUERPO
-========================== */
+===================================== */
 
 .cuerpo {
 
@@ -1009,16 +1065,17 @@ body {
     absolute;
 
   top:
-    285px;
+    270px;
 
   left:
     0;
 
   width:
-    280px;
+    300px;
 
   height:
-    220px;
+    230px;
+
 }
 
 
@@ -1028,46 +1085,41 @@ body {
     absolute;
 
   left:
-    80px;
+    85px;
 
   top:
     0;
 
   width:
-    120px;
+    130px;
 
   height:
-    160px;
-
-  border-radius:
-    35px 35px 15px 15px;
+    165px;
 
   border:
-    5px solid #4e3526;
+    5px solid #593722;
+
+  border-radius:
+    35px 35px 20px 20px;
 
   background:
     linear-gradient(
       90deg,
-      #4f3425,
-      #805838,
-      #5b3c28
+      #6e442a,
+      #a4663c,
+      #72472c
     );
 
   overflow:
     hidden;
+
 }
 
 
-.linea-tronco {
+.tronco div {
 
   position:
     absolute;
-
-  left:
-    20px;
-
-  top:
-    0;
 
   width:
     5px;
@@ -1076,28 +1128,30 @@ body {
     100%;
 
   background:
-    #c08b58;
+    #d09357;
 
   opacity:
     .35;
+
 }
 
 
-.linea2 {
-  left:
-    50px;
+.tronco div:nth-child(1) {
+  left: 25px;
+}
+
+.tronco div:nth-child(2) {
+  left: 60px;
+}
+
+.tronco div:nth-child(3) {
+  left: 95px;
 }
 
 
-.linea3 {
-  left:
-    80px;
-}
-
-
-/* ==========================
+/* =====================================
    BRAZOS
-========================== */
+===================================== */
 
 .brazo {
 
@@ -1105,26 +1159,24 @@ body {
     absolute;
 
   top:
-    15px;
+    20px;
 
   width:
-    110px;
+    115px;
 
   height:
-    30px;
-
-  background:
-    #714b31;
+    32px;
 
   border-radius:
     30px;
 
-  transition:
-    transform .3s;
+  background:
+    #794b2d;
+
 }
 
 
-.brazo-izquierdo {
+.brazoIzquierdo {
 
   left:
     0;
@@ -1134,10 +1186,11 @@ body {
 
   transform-origin:
     right center;
+
 }
 
 
-.brazo-derecho {
+.brazoDerecho {
 
   right:
     0;
@@ -1147,6 +1200,7 @@ body {
 
   transform-origin:
     left center;
+
 }
 
 
@@ -1156,55 +1210,26 @@ body {
     absolute;
 
   top:
-    -12px;
+    -17px;
 
   font-size:
-    35px;
-}
-
-
-.brazo-izquierdo .mano {
-  left:
-    -15px;
-}
-
-
-.brazo-derecho .mano {
-  right:
-    -15px;
-}
-
-
-/* SALUDAR */
-
-#frailejon.saludando
-.brazo-derecho {
-
-  animation:
-    saludar
-    .35s
-    infinite alternate;
-}
-
-
-@keyframes saludar {
-
-  from {
-    transform:
-      rotate(-35deg);
-  }
-
-  to {
-    transform:
-      rotate(-80deg);
-  }
+    37px;
 
 }
 
 
-/* ==========================
+.brazoIzquierdo .mano {
+  left: -15px;
+}
+
+.brazoDerecho .mano {
+  right: -15px;
+}
+
+
+/* =====================================
    PIERNAS
-========================== */
+===================================== */
 
 .pierna {
 
@@ -1215,28 +1240,26 @@ body {
     145px;
 
   width:
-    34px;
+    36px;
 
   height:
     65px;
 
-  background:
-    #593a27;
-
   border-radius:
     0 0 20px 20px;
+
+  background:
+    #643d27;
+
 }
 
 
-.pierna-izquierda {
-  left:
-    82px;
+.pierna1 {
+  left: 88px;
 }
 
-
-.pierna-derecha {
-  right:
-    82px;
+.pierna2 {
+  right: 88px;
 }
 
 
@@ -1249,56 +1272,66 @@ body {
     195px;
 
   width:
-    70px;
+    75px;
 
   height:
-    27px;
+    28px;
 
   border-radius:
     50%;
 
   background:
-    #202020;
+    #252525;
+
 }
 
 
-.zapato-izquierdo {
-  left:
-    50px;
+.zapato1 {
+  left: 50px;
+}
+
+.zapato2 {
+  right: 50px;
 }
 
 
-.zapato-derecho {
-  right:
-    50px;
-}
+/* =====================================
+   ANIMACIONES ERNESTO
+===================================== */
 
-
-/* ==========================
-   BAILAR
-========================== */
-
-#frailejon.bailando {
+.ernesto.saludando .brazoDerecho {
 
   animation:
-    baile
-    .55s
-    ease-in-out
-    infinite
-    alternate;
+    saludar
+    .35s
+    infinite alternate;
+
 }
 
 
-@keyframes baile {
+@keyframes saludar {
 
-  from {
+  to {
 
     transform:
-      translateX(-50%)
-      rotate(-7deg)
-      translateY(0);
+      rotate(-85deg);
 
   }
+
+}
+
+
+.ernesto.bailando {
+
+  animation:
+    bailar
+    .55s
+    infinite alternate ease-in-out;
+
+}
+
+
+@keyframes bailar {
 
   to {
 
@@ -1312,149 +1345,40 @@ body {
 }
 
 
-/* ==========================
-   CAMINAR
-========================== */
-
-#frailejon.caminando {
+.ernesto.parpadeando .ojo {
 
   animation:
-    caminar
-    1.4s
-    ease-in-out
-    infinite
-    alternate;
+    parpadear
+    .15s
+    linear;
+
 }
 
 
-@keyframes caminar {
+@keyframes parpadear {
 
-  from {
-
+  50% {
     transform:
-      translateX(
-        calc(-50% - 130px)
-      );
-
-  }
-
-  to {
-
-    transform:
-      translateX(
-        calc(-50% + 130px)
-      );
-
+      scaleY(.1);
   }
 
 }
 
 
-/* ==========================
-   BURBUJA
-========================== */
+/* =====================================
+   VEGETACIÓN
+===================================== */
 
-#burbuja {
-
-  position:
-    absolute;
-
-  z-index:
-    70;
-
-  top:
-    120px;
-
-  left:
-    60%;
-
-  width:
-    min(280px, 35%);
-
-  padding:
-    18px;
-
-  border:
-    4px solid #23734b;
-
-  border-radius:
-    25px;
-
-  background:
-    white;
-
-  color:
-    #174c35;
-
-  font-weight:
-    bold;
-
-  text-align:
-    center;
-
-  opacity:
-    0;
-
-  transform:
-    translateY(20px);
-
-  transition:
-    .3s;
-
-  box-shadow:
-    0 10px 25px #0003;
-}
-
-
-#burbuja.visible {
-
-  opacity:
-    1;
-
-  transform:
-    translateY(0);
-}
-
-
-/* ==========================
-   SUELO
-========================== */
-
-.suelo {
+.vegetacion {
 
   position:
     absolute;
 
   z-index:
-    30;
+    55;
 
   bottom:
-    0;
-
-  left:
-    0;
-
-  width:
-    100%;
-
-  height:
-    110px;
-
-  background:
-    linear-gradient(
-      #548957,
-      #2e653c
-    );
-}
-
-
-.plantas {
-
-  position:
-    absolute;
-
-  top:
-    -35px;
+    55px;
 
   left:
     0;
@@ -1469,24 +1393,504 @@ body {
     32px;
 
   letter-spacing:
-    8px;
+    4px;
+
 }
 
 
-/* ==========================
-   LLUVIA
-========================== */
+/* =====================================
+   SUELO
+===================================== */
 
-#lluvia {
+.suelo {
 
   position:
     absolute;
 
-  inset:
+  z-index:
+    50;
+
+  bottom:
     0;
 
+  left:
+    0;
+
+  width:
+    100%;
+
+  height:
+    85px;
+
+  background:
+    linear-gradient(
+      #527f4b,
+      #2d5d38
+    );
+
+}
+
+
+/* =====================================
+   DIÁLOGO
+===================================== */
+
+.dialogo {
+
+  position:
+    absolute;
+
   z-index:
-    80;
+    70;
+
+  top:
+    90px;
+
+  left:
+    65%;
+
+  width:
+    270px;
+
+  padding:
+    18px;
+
+  background:
+    white;
+
+  border:
+    4px solid #27704a;
+
+  border-radius:
+    22px;
+
+  box-shadow:
+    0 12px 25px #0003;
+
+  opacity:
+    0;
+
+  transform:
+    translateY(20px);
+
+  transition:
+    .3s;
+
+}
+
+
+.dialogo.visible {
+
+  opacity:
+    1;
+
+  transform:
+    translateY(0);
+
+}
+
+
+.dialogo strong {
+
+  display:
+    block;
+
+  color:
+    #23734b;
+
+  margin-bottom:
+    7px;
+
+}
+
+
+.dialogo span {
+
+  line-height:
+    1.4;
+
+}
+
+
+/* =====================================
+   SUBSUELO
+===================================== */
+
+.subsuelo {
+
+  position:
+    absolute;
+
+  z-index:
+    100;
+
+  left:
+    0;
+
+  bottom:
+    -500px;
+
+  width:
+    100%;
+
+  height:
+    500px;
+
+  background:
+    #563e2d;
+
+  transition:
+    bottom 1s;
+
+}
+
+
+#escenario.explorando .subsuelo {
+
+  bottom:
+    0;
+
+}
+
+
+/* CAPAS */
+
+.capa {
+
+  position:
+    absolute;
+
+  left:
+    0;
+
+  width:
+    100%;
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  align-items:
+    center;
+
+  font-weight:
+    bold;
+
+}
+
+
+.tierra {
+
+  top:
+    0;
+
+  height:
+    100px;
+
+  background:
+    #684b35;
+
+  color:
+    #f4d7a3;
+
+}
+
+
+.aguaSubterranea {
+
+  top:
+    100px;
+
+  height:
+    130px;
+
+  background:
+    #276a78;
+
+  color:
+    #c9f7ff;
+
+  flex-direction:
+    column;
+
+}
+
+
+.aguas {
+
+  margin-top:
+    20px;
+
+  font-size:
+    25px;
+
+  animation:
+    aguaMovimiento
+    2s infinite alternate;
+
+}
+
+
+@keyframes aguaMovimiento {
+
+  to {
+
+    transform:
+      translateX(20px);
+
+  }
+
+}
+
+
+.roca {
+
+  bottom:
+    0;
+
+  height:
+    270px;
+
+  background:
+    repeating-linear-gradient(
+      35deg,
+      #393635 0,
+      #393635 40px,
+      #464341 41px,
+      #464341 80px
+    );
+
+  color:
+    #ccc;
+
+}
+
+
+/* =====================================
+   POZO
+===================================== */
+
+.pozo {
+
+  position:
+    absolute;
+
+  z-index:
+    10;
+
+  left:
+    67%;
+
+  top:
+    0;
+
+  width:
+    180px;
+
+  height:
+    500px;
+
+}
+
+
+.torre {
+
+  position:
+    absolute;
+
+  top:
+    -55px;
+
+  left:
+    35px;
+
+  font-size:
+    65px;
+
+}
+
+
+.tuberia {
+
+  position:
+    absolute;
+
+  top:
+    30px;
+
+  left:
+    80px;
+
+  width:
+    22px;
+
+  height:
+    300px;
+
+  background:
+    #222;
+
+  border:
+    4px solid #111;
+
+}
+
+
+.fracturas {
+
+  position:
+    absolute;
+
+  top:
+    275px;
+
+  left:
+    30px;
+
+  width:
+    130px;
+
+  height:
+    90px;
+
+}
+
+
+.fracturas i {
+
+  position:
+    absolute;
+
+  width:
+    100px;
+
+  height:
+    6px;
+
+  background:
+    #e24d38;
+
+  transform:
+    rotate(25deg);
+
+  box-shadow:
+    0 0 10px #ff4d35;
+
+}
+
+
+.fracturas i:nth-child(1) {
+  top: 10px;
+}
+
+.fracturas i:nth-child(2) {
+  top: 40px;
+  transform: rotate(-20deg);
+}
+
+.fracturas i:nth-child(3) {
+  top: 70px;
+  transform: rotate(15deg);
+}
+
+
+.alertaPozo {
+
+  position:
+    absolute;
+
+  top:
+    210px;
+
+  left:
+    105px;
+
+  font-size:
+    40px;
+
+  animation:
+    alerta 1s infinite alternate;
+
+}
+
+
+@keyframes alerta {
+
+  to {
+    transform:
+      scale(1.25);
+  }
+
+}
+
+
+/* =====================================
+   CONTAMINACIÓN
+===================================== */
+
+.contaminacion {
+
+  position:
+    absolute;
+
+  z-index:
+    120;
+
+  bottom:
+    210px;
+
+  left:
+    78%;
+
+  font-size:
+    50px;
+
+  opacity:
+    0;
+
+}
+
+
+#escenario.explorando .contaminacion {
+
+  opacity:
+    1;
+
+  animation:
+    contaminacion
+    1.5s infinite alternate;
+
+}
+
+
+@keyframes contaminacion {
+
+  to {
+
+    transform:
+      translateY(-15px);
+
+  }
+
+}
+
+
+/* =====================================
+   LLUVIA
+===================================== */
+
+.lluvia {
+
+  position:
+    absolute;
+
+  z-index:
+    150;
+
+  inset:
+    0;
 
   pointer-events:
     none;
@@ -1494,18 +1898,18 @@ body {
   opacity:
     0;
 
-  transition:
-    opacity .3s;
 }
 
 
-#lluvia.activa {
+.lluvia.activa {
+
   opacity:
     1;
+
 }
 
 
-.gota-lluvia {
+.gota {
 
   position:
     absolute;
@@ -1517,10 +1921,10 @@ body {
     3px;
 
   height:
-    25px;
+    28px;
 
   background:
-    #b8eaff;
+    #c7f1ff;
 
   border-radius:
     10px;
@@ -1530,93 +1934,61 @@ body {
     .7s
     linear
     infinite;
+
 }
 
 
 @keyframes caer {
 
   to {
+
     transform:
-      translateY(700px);
+      translateY(720px);
+
   }
 
 }
 
 
-/* ==========================
-   GOTAS DE AGUA
-========================== */
+/* =====================================
+   MENÚ
+===================================== */
 
-.gota-agua {
-
-  position:
-    absolute;
-
-  z-index:
-    90;
-
-  font-size:
-    34px;
-
-  cursor:
-    pointer;
-
-  animation:
-    flotarGota
-    1.5s
-    ease-in-out
-    infinite
-    alternate;
-}
-
-
-@keyframes flotarGota {
-
-  to {
-    transform:
-      translateY(-18px)
-      rotate(8deg);
-  }
-
-}
-
-
-/* ==========================
-   CONTROLES
-========================== */
-
-.controles {
+.menu {
 
   display:
-    flex;
+    grid;
 
-  flex-wrap:
-    wrap;
-
-  justify-content:
-    center;
+  grid-template-columns:
+    repeat(4, 1fr);
 
   gap:
-    10px;
+    12px;
 
-  margin-top:
-    18px;
+  margin:
+    18px 0;
+
 }
 
 
-button {
+.menu button,
+.controles button,
+.final button {
 
   border:
     0;
 
   border-radius:
-    16px;
+    18px;
 
   padding:
-    13px 17px;
+    16px;
+
+  cursor:
+    pointer;
 
   background:
-    #23734b;
+    #246d47;
 
   color:
     white;
@@ -1627,154 +1999,482 @@ button {
   font-weight:
     bold;
 
-  cursor:
-    pointer;
-
   box-shadow:
-    0 5px 12px #0003;
+    0 7px 15px #0003;
 
   transition:
     .2s;
+
 }
 
 
-button:hover {
+.menu button {
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  gap:
+    5px;
+
+  font-size:
+    1.2rem;
+
+}
+
+
+.menu button:hover,
+.controles button:hover,
+.final button:hover {
 
   background:
-    #165535;
+    #174b31;
 
   transform:
     translateY(-3px);
+
 }
 
 
-/* ==========================
-   MENSAJE
-========================== */
+/* BOTÓN FRACKING */
 
-.mensaje {
-
-  margin-top:
-    15px;
-
-  padding:
-    15px;
-
-  border-radius:
-    18px;
+#btnFracking {
 
   background:
-    #ffffffaa;
+    #9b3e2f;
 
-  text-align:
-    center;
-
-  font-weight:
-    bold;
 }
 
 
-footer {
+#btnFracking:hover {
 
-  text-align:
+  background:
+    #71261d;
+
+}
+
+
+/* =====================================
+   INFORMACIÓN
+===================================== */
+
+.informacion {
+
+  display:
+    flex;
+
+  gap:
+    20px;
+
+  align-items:
+    center;
+
+  padding:
+    25px;
+
+  background:
+    white;
+
+  border-left:
+    8px solid #2d8155;
+
+  border-radius:
+    20px;
+
+  box-shadow:
+    0 10px 25px #0002;
+
+}
+
+
+.infoIcono {
+
+  font-size:
+    55px;
+
+}
+
+
+.informacion h2 {
+
+  margin-top:
+    0;
+
+}
+
+
+.informacion p {
+
+  line-height:
+    1.7;
+
+}
+
+
+/* =====================================
+   ALERTA
+===================================== */
+
+.alerta {
+
+  display:
+    flex;
+
+  gap:
+    20px;
+
+  align-items:
     center;
 
   margin-top:
-    15px;
+    18px;
 
-  color:
-    #174c35;
+  padding:
+    25px;
+
+  background:
+    #fff0e8;
+
+  border:
+    3px solid #d85b42;
+
+  border-radius:
+    20px;
+
+  box-shadow:
+    0 10px 25px #0002;
+
 }
 
 
-/* ==========================
-   NOCHE
-========================== */
+.alertaIcono {
 
-.app.noche .cielo {
+  font-size:
+    55px;
+
+}
+
+
+.alerta h2 {
+
+  color:
+    #a53927;
+
+}
+
+
+/* =====================================
+   CONTROLES
+===================================== */
+
+.controles {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    10px;
+
+  margin:
+    20px 0;
+
+}
+
+
+/* =====================================
+   DATOS
+===================================== */
+
+.datos {
+
+  margin-top:
+    40px;
+
+}
+
+
+.datos h2 {
+
+  text-align:
+    center;
+
+  font-size:
+    2rem;
+
+}
+
+
+.tarjetas {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap:
+    15px;
+
+}
+
+
+.tarjetas article {
+
+  padding:
+    22px;
+
+  background:
+    white;
+
+  border-radius:
+    20px;
+
+  box-shadow:
+    0 8px 20px #0002;
+
+}
+
+
+.tarjetas article > div {
+
+  font-size:
+    45px;
+
+}
+
+
+.tarjetas h3 {
+
+  color:
+    #23734b;
+
+}
+
+
+.tarjetas p {
+
+  line-height:
+    1.6;
+
+}
+
+
+.tarjetaRiesgo {
+
+  border-top:
+    6px solid #c74b35;
+
+}
+
+
+/* =====================================
+   FINAL
+===================================== */
+
+.final {
+
+  margin:
+    40px 0;
+
+  padding:
+    50px 20px;
+
+  text-align:
+    center;
+
+  color:
+    white;
+
+  border-radius:
+    30px;
 
   background:
     linear-gradient(
-      #111b3b 0%,
-      #263b60 60%,
-      #36523e 60%,
-      #23442d 100%
+      135deg,
+      #1c6741,
+      #37845b
+    );
+
+  box-shadow:
+    0 15px 35px #0003;
+
+}
+
+
+.finalErnesto {
+
+  font-size:
+    70px;
+
+}
+
+
+.final h2 {
+
+  font-size:
+    clamp(1.8rem, 4vw, 3rem);
+
+}
+
+
+.final p {
+
+  font-size:
+    1.15rem;
+
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+
+  padding:
+    30px 10px;
+
+  text-align:
+    center;
+
+  color:
+    #456552;
+
+}
+
+
+/* =====================================
+   NOCHE
+===================================== */
+
+.pagina.noche .cielo {
+
+  background:
+    linear-gradient(
+      #111c3c,
+      #273b5d 58%,
+      #344e3b 58%,
+      #1f3928
     );
 
 }
 
 
-.app.noche .sol {
+.pagina.noche .sol {
 
   opacity:
     0;
+
 }
 
 
-.app.noche .luna {
+.pagina.noche .luna {
 
   opacity:
     1;
+
 }
 
 
-.app.noche .estrellas {
+.pagina.noche .estrellas {
 
   opacity:
     1;
+
 }
 
 
-.app.noche .nube {
+/* =====================================
+   MODO AMENAZA
+===================================== */
+
+#escenario.amenaza {
+
+  box-shadow:
+    0 0 0 5px #c94b35,
+    0 20px 60px #8d271c88;
+
+}
+
+
+#escenario.amenaza .cielo {
 
   filter:
-    brightness(.35);
+    saturate(.65);
+
 }
 
 
-/* ==========================
-   CELULARES
-========================== */
+#escenario.amenaza .laguna {
 
-@media(max-width: 700px) {
+  filter:
+    saturate(.45);
 
-  .app {
-    width:
-      96%;
+}
+
+
+#escenario.amenaza .ernesto {
+
+  animation:
+    preocupacion
+    1s infinite alternate;
+
+}
+
+
+@keyframes preocupacion {
+
+  to {
+
+    transform:
+      translateX(-50%)
+      translateY(4px);
+
   }
 
+}
 
-  .header {
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width: 800px) {
+
+  .cabecera {
+
+    flex-direction:
+      column;
 
     align-items:
-      flex-start;
+      stretch;
 
   }
 
 
-  .header h1 {
+  .menu {
 
-    font-size:
-      2rem;
-
-  }
-
-
-  .header p {
-
-    font-size:
-      .95rem;
+    grid-template-columns:
+      repeat(2, 1fr);
 
   }
 
 
-  .agua-contador {
+  .tarjetas {
 
-    font-size:
-      1rem;
-
-    padding:
-      8px 12px;
+    grid-template-columns:
+      repeat(2, 1fr);
 
   }
 
@@ -1782,12 +2482,12 @@ footer {
   #escenario {
 
     height:
-      570px;
+      600px;
 
   }
 
 
-  #frailejon {
+  .ernesto {
 
     transform:
       translateX(-50%)
@@ -1799,16 +2499,16 @@ footer {
   }
 
 
-  #burbuja {
-
-    top:
-      70px;
+  .dialogo {
 
     left:
       50%;
 
+    top:
+      40px;
+
     width:
-      230px;
+      240px;
 
     transform:
       translateX(-50%);
@@ -1816,30 +2516,75 @@ footer {
   }
 
 
-  #burbuja.visible {
+  .dialogo.visible {
+
+    transform:
+      translateX(-50%);
+
+  }
+
+}
+
+
+@media(max-width: 520px) {
+
+  .pagina {
+
+    width:
+      94%;
+
+  }
+
+
+  .menu {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+  }
+
+
+  .tarjetas {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .menu button span {
+
+    font-size:
+      .85rem;
+
+  }
+
+
+  .laguna {
+
+    width:
+      170px;
+
+  }
+
+
+  .ernesto {
 
     transform:
       translateX(-50%)
-      translateY(-10px);
+      scale(.65);
 
   }
 
 
-  .nube {
+  .informacion,
+  .alerta {
 
-    font-size:
-      45px;
+    flex-direction:
+      column;
 
-  }
-
-
-  .sol {
-
-    font-size:
-      48px;
-
-    right:
-      20px;
+    text-align:
+      center;
 
   }
 
