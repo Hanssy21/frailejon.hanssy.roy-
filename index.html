@@ -4,31 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Ernesto y el Páramo BY HANSSY ROY 🌿</title>
+  <title>Frailejón Ernesto Pérez 🌿</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div id="app">
+  <div class="app">
 
-    <!-- ENCABEZADO -->
+    <header class="header">
 
-    <header class="titulo">
       <div>
-        <span class="mini-hoja">🌿</span>
-        <h1>Ernesto y el Páramo POR HANSSY ROY </h1>
-        <p id="subtitulo">¡Bienvenido al páramo!</p>
+        <h1>🌿 Frailejón Ernesto Pérez</h1>
+        <p id="subtitulo">
+          ¡Bienvenido al páramo colombiano!
+        </p>
       </div>
 
-      <div class="marcador">
+      <div class="agua-contador">
         💧 <span id="agua">0</span>
       </div>
+
     </header>
 
-
-    <!-- ESCENARIO -->
 
     <main id="escenario">
 
@@ -36,32 +35,26 @@
 
       <div class="cielo"></div>
 
-      <div id="sol">☀️</div>
+      <div class="sol">☀️</div>
 
-      <div id="luna">🌙</div>
+      <div class="luna">🌙</div>
 
       <div class="estrellas">
-        <span>✦</span>
-        <span>✧</span>
-        <span>✦</span>
-        <span>✧</span>
-        <span>✦</span>
-        <span>✧</span>
-        <span>✦</span>
+        ✦　✧　✦　　　✧　✦
       </div>
 
 
       <!-- NUBES -->
 
-      <div class="nube nube-a">☁️</div>
-      <div class="nube nube-b">☁️</div>
+      <div class="nube nube1">☁️</div>
+      <div class="nube nube2">☁️</div>
 
 
       <!-- MONTAÑAS -->
 
-      <div class="montanas montana-lejana"></div>
-      <div class="montanas montana-media"></div>
-      <div class="montanas montana-cerca"></div>
+      <div class="montana montana1"></div>
+      <div class="montana montana2"></div>
+      <div class="montana montana3"></div>
 
 
       <!-- NIEBLA -->
@@ -69,16 +62,10 @@
       <div class="niebla"></div>
 
 
-      <!-- LLUVIA -->
-
-      <div id="lluvia"></div>
-
-
       <!-- MARIPOSAS -->
 
       <div class="mariposa mariposa1">🦋</div>
       <div class="mariposa mariposa2">🦋</div>
-      <div class="mariposa mariposa3">🦋</div>
 
 
       <!-- BURBUJA -->
@@ -88,24 +75,25 @@
       </div>
 
 
-      <!-- ERNESTO -->
+      <!-- =====================
+           FRAILEJÓN
+      ====================== -->
 
-      <div id="ernesto">
+      <div id="frailejon">
 
-        <div class="hojas">
 
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
+        <!-- HOJAS TRASERAS -->
+
+        <div class="hojas traseras">
+
+          <div class="hoja h1"></div>
+          <div class="hoja h2"></div>
+          <div class="hoja h3"></div>
+          <div class="hoja h4"></div>
+          <div class="hoja h5"></div>
+          <div class="hoja h6"></div>
+          <div class="hoja h7"></div>
+          <div class="hoja h8"></div>
 
         </div>
 
@@ -114,31 +102,34 @@
 
         <div class="cabeza">
 
-          <div class="pelos">
-            <i></i>
-            <i></i>
-            <i></i>
-            <i></i>
-            <i></i>
-            <i></i>
-            <i></i>
+          <div class="pelusa p1"></div>
+          <div class="pelusa p2"></div>
+          <div class="pelusa p3"></div>
+          <div class="pelusa p4"></div>
+          <div class="pelusa p5"></div>
+          <div class="pelusa p6"></div>
+
+
+          <!-- OJO IZQUIERDO -->
+
+          <div class="ojo ojo-izquierdo">
+            <div class="pupila"></div>
           </div>
 
 
-          <div class="ojo ojo1">
-            <span></span>
+          <!-- OJO DERECHO -->
+
+          <div class="ojo ojo-derecho">
+            <div class="pupila"></div>
           </div>
 
-          <div class="ojo ojo2">
-            <span></span>
-          </div>
 
-
-          <div class="mejilla mejilla1"></div>
-          <div class="mejilla mejilla2"></div>
+          <div class="mejilla izquierda"></div>
+          <div class="mejilla derecha"></div>
 
 
           <div class="nariz"></div>
+
 
           <div id="boca"></div>
 
@@ -149,39 +140,56 @@
 
         <div class="cuerpo">
 
+
+          <!-- BRAZO IZQUIERDO -->
+
           <div
-            id="brazo-izquierdo"
-            class="brazo"
+            id="brazoIzquierdo"
+            class="brazo brazo-izquierdo"
           >
+
             <div class="mano">
               🌿
             </div>
+
           </div>
 
 
+          <!-- BRAZO DERECHO -->
+
           <div
-            id="brazo-derecho"
-            class="brazo"
+            id="brazoDerecho"
+            class="brazo brazo-derecho"
           >
+
             <div class="mano">
               🌿
             </div>
+
           </div>
 
+
+          <!-- TRONCO -->
 
           <div class="tronco">
 
-            <div class="textura"></div>
+            <div class="linea-tronco"></div>
+            <div class="linea-tronco linea2"></div>
+            <div class="linea-tronco linea3"></div>
 
           </div>
 
 
-          <div class="pierna pierna1"></div>
-          <div class="pierna pierna2"></div>
+          <!-- PIERNAS -->
+
+          <div class="pierna pierna-izquierda"></div>
+          <div class="pierna pierna-derecha"></div>
 
 
-          <div class="zapato zapato1"></div>
-          <div class="zapato zapato2"></div>
+          <!-- ZAPATOS -->
+
+          <div class="zapato zapato-izquierdo"></div>
+          <div class="zapato zapato-derecho"></div>
 
         </div>
 
@@ -192,16 +200,22 @@
 
       <div class="suelo">
 
-        <div class="hierba">
-          🌿 🌱 🌿 🌱 🌿 🌿 🌱 🌿 🌱 🌿
+        <div class="plantas">
+          🌿 🌱 🌿 🌱 🌿 🌱 🌿 🌱 🌿
         </div>
 
       </div>
 
 
-      <!-- GOTAS -->
+      <!-- LLUVIA -->
+
+      <div id="lluvia"></div>
+
+
+      <!-- GOTAS DE AGUA -->
 
       <div id="gotas"></div>
+
 
     </main>
 
@@ -235,18 +249,16 @@
       </button>
 
       <button id="btnAgua">
-        💧 Crear agua
+        💧 Buscar agua
       </button>
 
     </section>
 
 
-    <!-- MENSAJE -->
-
-    <div class="mensaje-final">
+    <div class="mensaje">
 
       <p id="mensaje">
-        Ayuda a cuidar el páramo.
+        ¡Ayuda a cuidar nuestros páramos!
       </p>
 
     </div>
@@ -254,8 +266,7 @@
 
     <footer>
 
-      🌿 Proyecto educativo hecho con
-      HTML, CSS y JavaScript 🇨🇴
+      🌱 Proyecto web inspirado en el páramo colombiano 🇨🇴
 
     </footer>
 

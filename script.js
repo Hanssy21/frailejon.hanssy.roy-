@@ -1,24 +1,35 @@
+// ==========================================
+// ELEMENTOS
+// ==========================================
+
 const app =
-  document.getElementById("app");
+  document.querySelector(".app");
 
-const ernesto =
-  document.getElementById("ernesto");
+const escenario =
+  document.getElementById("escenario");
 
-const texto =
+const frailejon =
+  document.getElementById("frailejon");
+
+const burbuja =
+  document.getElementById("burbuja");
+
+const subtitulo =
   document.getElementById("subtitulo");
 
 const mensaje =
   document.getElementById("mensaje");
 
-const burbuja =
-  document.getElementById("burbuja");
-
-const agua =
+const aguaTexto =
   document.getElementById("agua");
 
 const lluvia =
   document.getElementById("lluvia");
 
+
+// ==========================================
+// BOTONES
+// ==========================================
 
 const btnSaludar =
   document.getElementById("btnSaludar");
@@ -42,50 +53,104 @@ const btnAgua =
   document.getElementById("btnAgua");
 
 
-let puntos = 0;
+// ==========================================
+// COMPROBAR ELEMENTOS
+// ==========================================
 
-let bailando = false;
+const elementos = {
 
-let caminando = false;
+  app,
+  escenario,
+  frailejon,
+  burbuja,
+  subtitulo,
+  mensaje,
+  aguaTexto,
+  lluvia,
+  btnSaludar,
+  btnHablar,
+  btnBailar,
+  btnCaminar,
+  btnLluvia,
+  btnNoche,
+  btnAgua
 
-let esNoche = false;
-
-let estaLloviendo = false;
+};
 
 
-// ======================================
+Object.entries(elementos)
+  .forEach(
+    ([nombre, elemento]) => {
+
+      if (!elemento) {
+
+        console.error(
+          `No existe el elemento: ${nombre}`
+        );
+
+      }
+
+    }
+  );
+
+
+// ==========================================
+// VARIABLES
+// ==========================================
+
+let puntos =
+  0;
+
+let bailando =
+  false;
+
+let caminando =
+  false;
+
+let noche =
+  false;
+
+let lloviendo =
+  false;
+
+
+// ==========================================
 // FRASES
-// ======================================
+// ==========================================
 
 const frases = [
 
   "¡Hola! Soy Ernesto Pérez.",
 
-  "¡Qué hermoso está nuestro páramo!",
+  "¡Bienvenido al páramo!",
 
   "¡El agua es vida!",
 
-  "¡Cuidemos los frailejones!",
+  "¡Cuidemos nuestros frailejones!",
 
-  "¡Protejamos nuestra naturaleza!",
+  "¡Los páramos son tesoros de Colombia!",
 
-  "¡Los páramos son muy importantes!",
+  "¡Tenemos que proteger la naturaleza!",
 
-  "¡Qué bonito es Colombia!",
+  "¡Qué bonito está nuestro páramo!",
 
   "¡Vamos a cuidar el agua!",
 
   "¡Un saludo verde para todos!"
+
 ];
 
 
-// ======================================
-// HABLAR
-// ======================================
+// ==========================================
+// FUNCIÓN HABLAR
+// ==========================================
 
 function hablar(frase) {
 
-  texto.textContent =
+  if (!frase) return;
+
+
+  subtitulo.textContent =
     frase;
 
   mensaje.textContent =
@@ -117,27 +182,38 @@ function hablar(frase) {
       "es-CO";
 
     voz.pitch =
-      1.2;
+      1.15;
 
     voz.rate =
-      .9;
+      0.9;
 
     voz.volume =
       1;
 
 
-    ernesto.classList.add(
+    frailejon.classList.add(
       "hablando"
     );
 
 
-    voz.onend = () => {
+    voz.onend =
+      () => {
 
-      ernesto.classList.remove(
-        "hablando"
-      );
+        frailejon.classList.remove(
+          "hablando"
+        );
 
-    };
+      };
+
+
+    voz.onerror =
+      () => {
+
+        frailejon.classList.remove(
+          "hablando"
+        );
+
+      };
 
 
     speechSynthesis.speak(
@@ -149,60 +225,65 @@ function hablar(frase) {
 }
 
 
-// ======================================
+// ==========================================
 // SALUDAR
-// ======================================
+// ==========================================
 
 btnSaludar.addEventListener(
   "click",
   () => {
 
-    ernesto.classList.add(
+    frailejon.classList.add(
       "saludando"
     );
 
+
     hablar(
-      "¡Hola! ¡Qué alegría verte por aquí!"
+      "¡Hola! ¡Qué alegría verte!"
     );
 
 
-    setTimeout(() => {
+    setTimeout(
+      () => {
 
-      ernesto.classList.remove(
-        "saludando"
-      );
+        frailejon.classList.remove(
+          "saludando"
+        );
 
-    }, 2000);
+      },
+      2200
+    );
 
   }
 );
 
 
-// ======================================
+// ==========================================
 // HABLAR
-// ======================================
+// ==========================================
 
 btnHablar.addEventListener(
   "click",
   () => {
 
-    const numero =
+    const indice =
       Math.floor(
         Math.random()
         * frases.length
       );
 
+
     hablar(
-      frases[numero]
+      frases[indice]
     );
 
   }
 );
 
 
-// ======================================
+// ==========================================
 // BAILAR
-// ======================================
+// ==========================================
 
 btnBailar.addEventListener(
   "click",
@@ -214,9 +295,12 @@ btnBailar.addEventListener(
 
     if (bailando) {
 
-      ernesto.classList.add(
+      frailejon.classList.add(
         "bailando"
       );
+
+      btnBailar.textContent =
+        "🛑 Parar baile";
 
       hablar(
         "¡Vamos a bailar!"
@@ -224,12 +308,15 @@ btnBailar.addEventListener(
 
     } else {
 
-      ernesto.classList.remove(
+      frailejon.classList.remove(
         "bailando"
       );
 
+      btnBailar.textContent =
+        "💃 Bailar";
+
       hablar(
-        "¡Qué divertido!"
+        "¡Eso estuvo divertido!"
       );
 
     }
@@ -238,9 +325,9 @@ btnBailar.addEventListener(
 );
 
 
-// ======================================
+// ==========================================
 // CAMINAR
-// ======================================
+// ==========================================
 
 btnCaminar.addEventListener(
   "click",
@@ -252,9 +339,12 @@ btnCaminar.addEventListener(
 
     if (caminando) {
 
-      ernesto.classList.add(
+      frailejon.classList.add(
         "caminando"
       );
+
+      btnCaminar.textContent =
+        "🛑 Parar";
 
       hablar(
         "¡Vamos a explorar el páramo!"
@@ -262,12 +352,15 @@ btnCaminar.addEventListener(
 
     } else {
 
-      ernesto.classList.remove(
+      frailejon.classList.remove(
         "caminando"
       );
 
+      btnCaminar.textContent =
+        "🚶 Caminar";
+
       hablar(
-        "¡Me quedo aquí un momento!"
+        "¡Qué hermoso lugar!"
       );
 
     }
@@ -276,19 +369,19 @@ btnCaminar.addEventListener(
 );
 
 
-// ======================================
-// NOCHE
-// ======================================
+// ==========================================
+// DÍA / NOCHE
+// ==========================================
 
 btnNoche.addEventListener(
   "click",
   () => {
 
-    esNoche =
-      !esNoche;
+    noche =
+      !noche;
 
 
-    if (esNoche) {
+    if (noche) {
 
       app.classList.add(
         "noche"
@@ -311,7 +404,7 @@ btnNoche.addEventListener(
         "🌙 Noche";
 
       hablar(
-        "¡Buenos días, páramo!"
+        "¡Ha salido el sol!"
       );
 
     }
@@ -320,11 +413,11 @@ btnNoche.addEventListener(
 );
 
 
-// ======================================
-// LLUVIA
-// ======================================
+// ==========================================
+// CREAR LLUVIA
+// ==========================================
 
-function crearLluvia() {
+function prepararLluvia() {
 
   lluvia.innerHTML =
     "";
@@ -332,7 +425,7 @@ function crearLluvia() {
 
   for (
     let i = 0;
-    i < 90;
+    i < 100;
     i++
   ) {
 
@@ -373,18 +466,22 @@ function crearLluvia() {
 }
 
 
-crearLluvia();
+prepararLluvia();
 
+
+// ==========================================
+// BOTÓN LLUVIA
+// ==========================================
 
 btnLluvia.addEventListener(
   "click",
   () => {
 
-    estaLloviendo =
-      !estaLloviendo;
+    lloviendo =
+      !lloviendo;
 
 
-    if (estaLloviendo) {
+    if (lloviendo) {
 
       lluvia.classList.add(
         "activa"
@@ -394,7 +491,7 @@ btnLluvia.addEventListener(
         "☀️ Parar lluvia";
 
       hablar(
-        "¡Está lloviendo! El páramo está feliz."
+        "¡Está lloviendo! El páramo recibe agua."
       );
 
     } else {
@@ -416,9 +513,9 @@ btnLluvia.addEventListener(
 );
 
 
-// ======================================
-// CREAR GOTAS DE AGUA
-// ======================================
+// ==========================================
+// CREAR GOTA DE AGUA
+// ==========================================
 
 function crearGota() {
 
@@ -429,7 +526,7 @@ function crearGota() {
 
 
   gota.className =
-    "gota";
+    "gota-agua";
 
   gota.textContent =
     "💧";
@@ -445,9 +542,9 @@ function crearGota() {
     + "%";
 
 
-  document
-    .getElementById("escenario")
-    .appendChild(gota);
+  escenario.appendChild(
+    gota
+  );
 
 
   gota.addEventListener(
@@ -456,41 +553,45 @@ function crearGota() {
 
       puntos++;
 
-      agua.textContent =
+      aguaTexto.textContent =
         puntos;
-
-
-      gota.remove();
-
 
       mensaje.textContent =
         "💧 ¡Encontraste agua!";
 
 
+      gota.remove();
+
+
       hablar(
-        "¡Encontraste una gota de agua!"
+        "¡Muy bien! Encontraste agua."
       );
 
     }
   );
 
 
-  setTimeout(() => {
+  setTimeout(
+    () => {
 
-    if (
-      document.body.contains(
-        gota
-      )
-    ) {
+      if (
+        gota.parentElement
+      ) {
 
-      gota.remove();
+        gota.remove();
 
-    }
+      }
 
-  }, 6000);
+    },
+    7000
+  );
 
 }
 
+
+// ==========================================
+// BOTÓN AGUA
+// ==========================================
 
 btnAgua.addEventListener(
   "click",
@@ -498,31 +599,35 @@ btnAgua.addEventListener(
 
     crearGota();
 
+
     mensaje.textContent =
-      "💧 ¡Busca la gota y haz clic sobre ella!";
+      "💧 ¡Busca la gota azul y haz clic sobre ella!";
 
   }
 );
 
 
-// ======================================
+// ==========================================
 // PARPADEO AUTOMÁTICO
-// ======================================
+// ==========================================
 
 function parpadear() {
 
-  ernesto.classList.add(
+  frailejon.classList.add(
     "parpadeando"
   );
 
 
-  setTimeout(() => {
+  setTimeout(
+    () => {
 
-    ernesto.classList.remove(
-      "parpadeando"
-    );
+      frailejon.classList.remove(
+        "parpadeando"
+      );
 
-  }, 180);
+    },
+    180
+  );
 
 }
 
@@ -533,31 +638,9 @@ setInterval(
 );
 
 
-// ======================================
-// OCULTAR BURBUJA
-// ======================================
-
-setInterval(
-  () => {
-
-    if (
-      !speechSynthesis.speaking
-    ) {
-
-      burbuja.classList.remove(
-        "visible"
-      );
-
-    }
-
-  },
-  5000
-);
-
-
-// ======================================
+// ==========================================
 // MENSAJE INICIAL
-// ======================================
+// ==========================================
 
 setTimeout(
   () => {
@@ -567,5 +650,5 @@ setTimeout(
     );
 
   },
-  1000
+  800
 );

@@ -1,23 +1,16 @@
 * {
   box-sizing: border-box;
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  min-height: 100%;
 }
-
-
-:root {
-
-  --verde-oscuro: #174d35;
-  --verde: #43875a;
-  --verde-claro: #8fae72;
-  --tierra: #68472f;
-
-}
-
 
 body {
-
-  min-height: 100vh;
 
   font-family:
     Arial,
@@ -26,117 +19,131 @@ body {
 
   background:
     linear-gradient(
-      #bdebf5,
-      #d8f2df
+      #c9edf5,
+      #e5f4df
     );
 
-  color: var(--verde-oscuro);
+  color: #174c35;
 
   overflow-x: hidden;
-
 }
 
 
-#app {
+.app {
 
-  width: 95%;
-
-  max-width: 1200px;
+  width: min(
+    1200px,
+    96%
+  );
 
   margin: auto;
 
-  padding: 20px 0 30px;
-
+  padding:
+    20px 0 30px;
 }
 
 
-/* =============================
-   TITULO
-   ============================= */
+/* ==========================
+   CABECERA
+========================== */
 
-.titulo {
+.header {
 
   display: flex;
 
-  align-items: center;
+  justify-content:
+    space-between;
 
-  justify-content: space-between;
+  align-items:
+    center;
 
   gap: 20px;
 
-  margin-bottom: 15px;
-
+  margin-bottom:
+    15px;
 }
 
 
-.titulo h1 {
+.header h1 {
+
+  margin: 0;
 
   font-size:
-    clamp(2rem, 5vw, 4rem);
+    clamp(
+      2rem,
+      5vw,
+      3.8rem
+    );
 
-  color: var(--verde-oscuro);
-
-  text-shadow:
-    2px 3px 0 #ffffffaa;
-
+  color:
+    #174c35;
 }
 
 
-.titulo p {
+.header p {
 
-  font-size: 1.2rem;
+  margin:
+    5px 0 0;
 
+  font-size:
+    1.15rem;
 }
 
 
-.mini-hoja {
+.agua-contador {
 
-  font-size: 2rem;
-
-}
-
-
-.marcador {
-
-  background: white;
+  background:
+    white;
 
   border:
-    3px solid #43875a;
+    3px solid #39805b;
 
-  border-radius: 20px;
+  border-radius:
+    18px;
 
-  padding: 12px 18px;
+  padding:
+    10px 18px;
 
-  font-size: 1.3rem;
+  font-size:
+    1.3rem;
 
-  font-weight: bold;
+  font-weight:
+    bold;
 
   box-shadow:
-    0 7px 15px #0002;
+    0 5px 15px #0002;
 
+  white-space:
+    nowrap;
 }
 
 
-/* =============================
+/* ==========================
    ESCENARIO
-   ============================= */
+========================== */
 
 #escenario {
 
-  position: relative;
+  position:
+    relative;
 
-  height: 650px;
+  width:
+    100%;
 
-  overflow: hidden;
+  height:
+    650px;
 
-  border-radius: 35px;
+  overflow:
+    hidden;
 
-  box-shadow:
-    0 20px 40px #164d3540;
+  border-radius:
+    30px;
 
   background:
-    #91d8ee;
+    #8bd2ec;
 
+  box-shadow:
+    0 20px 40px #174c3540;
 }
 
 
@@ -144,294 +151,272 @@ body {
 
 .cielo {
 
-  position: absolute;
+  position:
+    absolute;
 
-  inset: 0;
+  inset:
+    0;
 
   background:
     linear-gradient(
-      #82d4ef 0%,
-      #c8efd9 62%,
-      #6d9c63 62%
+      #73c7e8 0%,
+      #bfe7db 60%,
+      #709c64 60%,
+      #416d46 100%
     );
 
   transition:
     background 1s;
-
 }
 
 
-/* SOL */
+/* ==========================
+   SOL
+========================== */
 
-#sol {
+.sol {
 
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 2;
+  z-index:
+    3;
 
-  top: 35px;
-  right: 50px;
+  top:
+    30px;
 
-  font-size: 75px;
+  right:
+    50px;
 
-  filter:
-    drop-shadow(0 0 15px #fff);
+  font-size:
+    70px;
 
   animation:
-    solMovimiento 6s
+    flotarSol 5s
     ease-in-out
-    infinite alternate;
-
+    infinite
+    alternate;
 }
 
 
-@keyframes solMovimiento {
-
-  from {
-    transform: translateY(0);
-  }
+@keyframes flotarSol {
 
   to {
-    transform: translateY(15px);
+    transform:
+      translateY(15px);
   }
 
 }
 
 
-/* LUNA */
+/* ==========================
+   LUNA
+========================== */
 
-#luna {
+.luna {
 
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 2;
+  z-index:
+    4;
 
-  top: 40px;
-  right: 60px;
+  top:
+    35px;
 
-  font-size: 70px;
+  right:
+    55px;
 
-  opacity: 0;
+  font-size:
+    65px;
+
+  opacity:
+    0;
 
   transition:
     opacity 1s;
-
 }
 
-
-/* ESTRELLAS */
 
 .estrellas {
 
-  position: absolute;
+  position:
+    absolute;
 
-  inset: 0;
+  z-index:
+    2;
 
-  z-index: 1;
+  top:
+    40px;
 
-  color: white;
+  left:
+    10%;
 
-  opacity: 0;
+  width:
+    80%;
+
+  color:
+    white;
+
+  font-size:
+    25px;
+
+  opacity:
+    0;
 
   transition:
     opacity 1s;
-
 }
 
 
-.estrellas span {
-
-  position: absolute;
-
-  font-size: 25px;
-
-  animation:
-    brillo 2s
-    infinite alternate;
-
-}
-
-
-.estrellas span:nth-child(1) {
-  top: 60px;
-  left: 10%;
-}
-
-.estrellas span:nth-child(2) {
-  top: 130px;
-  left: 25%;
-}
-
-.estrellas span:nth-child(3) {
-  top: 70px;
-  left: 45%;
-}
-
-.estrellas span:nth-child(4) {
-  top: 160px;
-  left: 65%;
-}
-
-.estrellas span:nth-child(5) {
-  top: 80px;
-  left: 80%;
-}
-
-.estrellas span:nth-child(6) {
-  top: 180px;
-  left: 90%;
-}
-
-.estrellas span:nth-child(7) {
-  top: 110px;
-  left: 55%;
-}
-
-
-@keyframes brillo {
-
-  from {
-    opacity: .3;
-    transform: scale(.7);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1.3);
-  }
-
-}
-
-
-/* =============================
+/* ==========================
    NUBES
-   ============================= */
+========================== */
 
 .nube {
 
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 4;
+  z-index:
+    5;
 
-  font-size: 80px;
+  font-size:
+    70px;
 
-  opacity: .8;
+  opacity:
+    .8;
 
   animation:
-    nube 15s
-    linear
-    infinite alternate;
-
+    nubeMovimiento
+    15s
+    ease-in-out
+    infinite
+    alternate;
 }
 
 
-.nube-a {
+.nube1 {
 
-  top: 55px;
-  left: 50px;
+  top:
+    45px;
 
+  left:
+    40px;
 }
 
 
-.nube-b {
+.nube2 {
 
-  top: 110px;
-  left: 55%;
+  top:
+    100px;
+
+  left:
+    55%;
 
   animation-delay:
     -5s;
-
 }
 
 
-@keyframes nube {
-
-  from {
-    transform: translateX(-30px);
-  }
+@keyframes nubeMovimiento {
 
   to {
-    transform: translateX(100px);
+
+    transform:
+      translateX(90px);
+
   }
 
 }
 
 
-/* =============================
+/* ==========================
    MONTAÑAS
-   ============================= */
+========================== */
 
-.montanas {
+.montana {
 
-  position: absolute;
+  position:
+    absolute;
 
-  bottom: 120px;
+  bottom:
+    110px;
 
-  width: 0;
-  height: 0;
+  width:
+    0;
+
+  height:
+    0;
 
   border-left:
-    400px solid transparent;
+    300px solid transparent;
 
   border-right:
-    400px solid transparent;
+    300px solid transparent;
 
 }
 
 
-.montana-lejana {
+.montana1 {
 
-  left: -300px;
+  left:
+    -180px;
 
   border-bottom:
-    350px solid #719b78;
-
+    330px solid #729779;
 }
 
 
-.montana-media {
+.montana2 {
 
-  right: -300px;
+  right:
+    -170px;
 
   border-bottom:
-    400px solid #5a8b61;
-
+    360px solid #5d8862;
 }
 
 
-.montana-cerca {
+.montana3 {
 
-  left: 25%;
+  left:
+    30%;
 
   border-left-width:
-    500px;
+    330px;
 
   border-right-width:
-    500px;
+    330px;
 
   border-bottom:
-    300px solid #477a53;
-
+    280px solid #4e7c55;
 }
 
 
-/* =============================
+/* ==========================
    NIEBLA
-   ============================= */
+========================== */
 
 .niebla {
 
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 8;
+  z-index:
+    9;
 
-  bottom: 150px;
+  left:
+    -10%;
 
-  left: -10%;
+  bottom:
+    150px;
 
-  width: 120%;
+  width:
+    120%;
 
-  height: 80px;
+  height:
+    90px;
 
   background:
     linear-gradient(
@@ -442,707 +427,875 @@ body {
     );
 
   filter:
-    blur(20px);
+    blur(18px);
 
   animation:
-    niebla 9s
+    moverNiebla
+    8s
     ease-in-out
-    infinite alternate;
-
+    infinite
+    alternate;
 }
 
 
-@keyframes niebla {
-
-  from {
-    transform: translateX(-5%);
-  }
+@keyframes moverNiebla {
 
   to {
-    transform: translateX(5%);
+    transform:
+      translateX(7%);
   }
 
 }
 
 
-/* =============================
-   ERNESTO
-   ============================= */
+/* ==========================
+   MARIPOSAS
+========================== */
 
-#ernesto {
+.mariposa {
 
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 20;
+  z-index:
+    25;
 
-  bottom: 90px;
+  font-size:
+    28px;
 
-  left: 50%;
+  animation:
+    volar
+    7s
+    ease-in-out
+    infinite;
+}
 
-  width: 270px;
 
-  height: 470px;
+.mariposa1 {
+
+  top:
+    42%;
+
+  left:
+    12%;
+}
+
+
+.mariposa2 {
+
+  top:
+    35%;
+
+  right:
+    13%;
+
+  animation-delay:
+    -3s;
+}
+
+
+@keyframes volar {
+
+  0% {
+    transform:
+      translate(0,0);
+  }
+
+  25% {
+    transform:
+      translate(50px,-40px);
+  }
+
+  50% {
+    transform:
+      translate(100px,10px);
+  }
+
+  75% {
+    transform:
+      translate(30px,60px);
+  }
+
+  100% {
+    transform:
+      translate(0,0);
+  }
+
+}
+
+
+/* ==========================
+   FRAILEJÓN
+========================== */
+
+#frailejon {
+
+  position:
+    absolute;
+
+  z-index:
+    20;
+
+  left:
+    50%;
+
+  bottom:
+    80px;
+
+  width:
+    280px;
+
+  height:
+    500px;
 
   transform:
     translateX(-50%);
 
   transform-origin:
     bottom center;
-
 }
 
 
-/* =============================
+/* ==========================
    HOJAS
-   ============================= */
+========================== */
 
 .hojas {
 
-  position: absolute;
+  position:
+    absolute;
 
-  width: 270px;
+  top:
+    0;
 
-  height: 220px;
+  left:
+    0;
 
-  top: -20px;
+  width:
+    280px;
 
-  left: 0;
-
+  height:
+    250px;
 }
 
 
-.hojas i {
+.hoja {
 
-  position: absolute;
+  position:
+    absolute;
 
-  width: 55px;
+  left:
+    115px;
 
-  height: 170px;
+  bottom:
+    45px;
 
-  left: 107px;
+  width:
+    52px;
 
-  top: 20px;
+  height:
+    190px;
 
   border-radius:
     60% 60% 20% 20%;
 
+  border:
+    4px solid #52724a;
+
   background:
     linear-gradient(
       90deg,
-      #708f60,
-      #a9bd82,
-      #668654
+      #668658,
+      #a9bf82,
+      #718f60
     );
 
-  border:
-    4px solid #527349;
-
-  transform-origin:
-    bottom center;
-
   box-shadow:
-    inset 3px 0 5px #ffffff55;
-
+    inset 4px 0 8px #ffffff55;
 }
 
 
-.hojas i:nth-child(1) {
-  transform: rotate(-70deg);
-}
-
-.hojas i:nth-child(2) {
-  transform: rotate(-55deg);
-}
-
-.hojas i:nth-child(3) {
-  transform: rotate(-40deg);
-}
-
-.hojas i:nth-child(4) {
-  transform: rotate(-25deg);
-}
-
-.hojas i:nth-child(5) {
-  transform: rotate(-12deg);
-}
-
-.hojas i:nth-child(6) {
-  transform: rotate(0deg);
-}
-
-.hojas i:nth-child(7) {
-  transform: rotate(12deg);
-}
-
-.hojas i:nth-child(8) {
-  transform: rotate(25deg);
-}
-
-.hojas i:nth-child(9) {
-  transform: rotate(40deg);
-}
-
-.hojas i:nth-child(10) {
-  transform: rotate(55deg);
-}
-
-.hojas i:nth-child(11) {
-  transform: rotate(70deg);
-}
-
-.hojas i:nth-child(12) {
-
-  width: 40px;
-
-  height: 130px;
-
+.h1 {
   transform:
-    rotate(90deg);
+    rotate(-72deg);
+}
 
+.h2 {
+  transform:
+    rotate(-58deg);
+}
+
+.h3 {
+  transform:
+    rotate(-44deg);
+}
+
+.h4 {
+  transform:
+    rotate(-30deg);
+}
+
+.h5 {
+  transform:
+    rotate(-15deg);
+}
+
+.h6 {
+  transform:
+    rotate(15deg);
+}
+
+.h7 {
+  transform:
+    rotate(30deg);
+}
+
+.h8 {
+  transform:
+    rotate(45deg);
 }
 
 
-/* =============================
+/* ==========================
    CABEZA
-   ============================= */
+========================== */
 
 .cabeza {
 
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 5;
+  z-index:
+    5;
 
-  top: 110px;
+  top:
+    115px;
 
-  left: 32px;
+  left:
+    37px;
 
-  width: 205px;
+  width:
+    206px;
 
-  height: 175px;
+  height:
+    180px;
 
   border-radius:
-    48% 48% 45% 45%;
+    48%;
 
   background:
     radial-gradient(
       circle at 50% 35%,
-      #e0edb0,
-      #b4cc88 70%,
-      #829c62
+      #e2efb3,
+      #b6cc88 65%,
+      #839d63
     );
 
   border:
-    6px solid #557449;
+    6px solid #557447;
 
   box-shadow:
-    0 10px 12px #0003;
-
+    0 8px 15px #0003;
 }
 
 
-/* PELOS */
+/* PELUSA */
 
-.pelos i {
+.pelusa {
 
-  position: absolute;
+  position:
+    absolute;
 
-  width: 35px;
+  width:
+    38px;
 
-  height: 35px;
-
-  background:
-    #9db778;
-
-  border:
-    4px solid #58784d;
+  height:
+    38px;
 
   border-radius:
     50%;
 
+  background:
+    #9eb979;
+
+  border:
+    4px solid #5c794e;
 }
 
 
-.pelos i:nth-child(1) {
-  left: 5px;
-  top: 35px;
+.p1 {
+  top: -15px;
+  left: 15px;
 }
 
-.pelos i:nth-child(2) {
-  left: 20px;
-  top: 10px;
+.p2 {
+  top: -25px;
+  left: 50px;
 }
 
-.pelos i:nth-child(3) {
-  left: 55px;
-  top: 0;
-}
-
-.pelos i:nth-child(4) {
+.p3 {
+  top: -30px;
   left: 85px;
-  top: -8px;
 }
 
-.pelos i:nth-child(5) {
-  left: 120px;
-  top: 0;
+.p4 {
+  top: -25px;
+  right: 50px;
 }
 
-.pelos i:nth-child(6) {
-  left: 155px;
-  top: 12px;
+.p5 {
+  top: -12px;
+  right: 15px;
 }
 
-.pelos i:nth-child(7) {
-  left: 175px;
-  top: 40px;
+.p6 {
+  top: 5px;
+  left: 85px;
 }
 
 
-/* OJOS */
+/* ==========================
+   OJOS
+========================== */
 
 .ojo {
 
-  position: absolute;
+  position:
+    absolute;
 
-  top: 65px;
+  top:
+    65px;
 
-  width: 38px;
+  width:
+    42px;
 
-  height: 50px;
+  height:
+    55px;
+
+  border-radius:
+    50%;
 
   background:
-    #fafbea;
+    #f8fae8;
 
   border:
-    5px solid #4f6843;
+    5px solid #506945;
+
+  overflow:
+    hidden;
+}
+
+
+.ojo-izquierdo {
+  left:
+    38px;
+}
+
+
+.ojo-derecho {
+  right:
+    38px;
+}
+
+
+.pupila {
+
+  position:
+    absolute;
+
+  left:
+    9px;
+
+  top:
+    13px;
+
+  width:
+    20px;
+
+  height:
+    28px;
 
   border-radius:
     50%;
-
-  overflow: hidden;
-
-}
-
-
-.ojo1 {
-  left: 40px;
-}
-
-.ojo2 {
-  right: 40px;
-}
-
-
-.ojo span {
-
-  position: absolute;
-
-  width: 18px;
-
-  height: 25px;
 
   background:
-    #26362a;
+    #243228;
+}
+
+
+.pupila::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  top:
+    4px;
+
+  left:
+    4px;
+
+  width:
+    6px;
+
+  height:
+    6px;
 
   border-radius:
     50%;
 
-  top: 12px;
-
-  left: 6px;
-
-}
-
-
-.ojo span::after {
-
-  content: "";
-
-  position: absolute;
-
-  width: 6px;
-
-  height: 6px;
-
-  background: white;
-
-  border-radius: 50%;
-
-  top: 4px;
-
-  left: 3px;
-
+  background:
+    white;
 }
 
 
 /* PARPADEO */
 
-#ernesto.parpadeando .ojo {
+#frailejon.parpadeando .ojo {
 
   animation:
-    parpadear .15s;
+    parpadeo
+    .16s
+    linear;
 }
 
 
-@keyframes parpadear {
+@keyframes parpadeo {
 
   50% {
-    transform: scaleY(.05);
+    transform:
+      scaleY(.08);
   }
 
 }
 
 
-/* MEJILLAS */
+/* ==========================
+   CARA
+========================== */
 
 .mejilla {
 
-  position: absolute;
+  position:
+    absolute;
 
-  top: 120px;
+  top:
+    125px;
 
-  width: 25px;
+  width:
+    25px;
 
-  height: 15px;
-
-  border-radius: 50%;
-
-  background:
-    #e69b87;
-
-  opacity: .55;
-
-}
-
-
-.mejilla1 {
-  left: 25px;
-}
-
-.mejilla2 {
-  right: 25px;
-}
-
-
-/* NARIZ */
-
-.nariz {
-
-  position: absolute;
-
-  top: 112px;
-
-  left: 91px;
-
-  width: 22px;
-
-  height: 20px;
-
-  background:
-    #b4c984;
+  height:
+    15px;
 
   border-radius:
     50%;
 
-  border:
-    3px solid #718956;
+  background:
+    #e78d7b;
 
+  opacity:
+    .5;
 }
 
 
-/* BOCA */
+.mejilla.izquierda {
+  left:
+    20px;
+}
+
+
+.mejilla.derecha {
+  right:
+    20px;
+}
+
+
+.nariz {
+
+  position:
+    absolute;
+
+  top:
+    112px;
+
+  left:
+    91px;
+
+  width:
+    25px;
+
+  height:
+    22px;
+
+  border-radius:
+    50%;
+
+  background:
+    #b6cc87;
+
+  border:
+    3px solid #708952;
+}
+
 
 #boca {
 
-  position: absolute;
+  position:
+    absolute;
 
-  top: 138px;
+  top:
+    145px;
 
-  left: 68px;
+  left:
+    65px;
 
-  width: 70px;
+  width:
+    76px;
 
-  height: 25px;
+  height:
+    25px;
 
   border-bottom:
-    7px solid #56372b;
+    7px solid #56372c;
 
   border-radius:
     0 0 50px 50px;
-
 }
 
 
-#ernesto.hablando #boca {
+#frailejon.hablando #boca {
 
-  height: 35px;
+  height:
+    35px;
 
   background:
-    #5a3029;
+    #562b25;
 
   border:
-    5px solid #41241e;
+    4px solid #3d211d;
 
   animation:
-    boca 0.18s
+    hablarBoca
+    .18s
     infinite alternate;
-
 }
 
 
-@keyframes boca {
+@keyframes hablarBoca {
 
   from {
-    transform: scaleY(.5);
+    transform:
+      scaleY(.45);
   }
 
   to {
-    transform: scaleY(1);
+    transform:
+      scaleY(1);
   }
 
 }
 
 
-/* =============================
+/* ==========================
    CUERPO
-   ============================= */
+========================== */
 
 .cuerpo {
 
-  position: absolute;
+  position:
+    absolute;
 
-  top: 270px;
+  top:
+    285px;
 
-  left: 0;
+  left:
+    0;
 
-  width: 270px;
+  width:
+    280px;
 
-  height: 230px;
-
+  height:
+    220px;
 }
 
 
 .tronco {
 
-  position: absolute;
+  position:
+    absolute;
 
-  left: 75px;
+  left:
+    80px;
 
-  width: 120px;
+  top:
+    0;
 
-  height: 155px;
+  width:
+    120px;
+
+  height:
+    160px;
 
   border-radius:
-    30px 30px 15px 15px;
+    35px 35px 15px 15px;
+
+  border:
+    5px solid #4e3526;
 
   background:
     linear-gradient(
       90deg,
-      #513522,
-      #805a38,
-      #5e4029
+      #4f3425,
+      #805838,
+      #5b3c28
     );
 
-  border:
-    5px solid #4c3425;
-
+  overflow:
+    hidden;
 }
 
 
-/* TEXTURA */
+.linea-tronco {
 
-.textura {
+  position:
+    absolute;
 
-  position: absolute;
+  left:
+    20px;
 
-  inset: 10px;
+  top:
+    0;
 
-  opacity: .3;
+  width:
+    5px;
+
+  height:
+    100%;
 
   background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0 12px,
-      #d5a06b 13px 15px
-    );
+    #c08b58;
 
+  opacity:
+    .35;
 }
 
 
-/* BRAZOS */
+.linea2 {
+  left:
+    50px;
+}
+
+
+.linea3 {
+  left:
+    80px;
+}
+
+
+/* ==========================
+   BRAZOS
+========================== */
 
 .brazo {
 
-  position: absolute;
+  position:
+    absolute;
 
-  top: 10px;
+  top:
+    15px;
 
-  width: 110px;
+  width:
+    110px;
 
-  height: 30px;
+  height:
+    30px;
 
   background:
-    #714b30;
+    #714b31;
 
-  border-radius: 30px;
+  border-radius:
+    30px;
 
-  transform-origin:
-    center right;
-
+  transition:
+    transform .3s;
 }
 
 
-#brazo-izquierdo {
+.brazo-izquierdo {
 
-  left: 0;
+  left:
+    0;
 
   transform:
     rotate(35deg);
 
+  transform-origin:
+    right center;
 }
 
 
-#brazo-derecho {
+.brazo-derecho {
 
-  right: 0;
+  right:
+    0;
 
   transform:
     rotate(-35deg);
 
   transform-origin:
-    center left;
-
+    left center;
 }
 
-
-/* MANOS */
 
 .mano {
 
-  position: absolute;
+  position:
+    absolute;
 
-  font-size: 35px;
+  top:
+    -12px;
 
-  top: -8px;
-
+  font-size:
+    35px;
 }
 
 
-#brazo-izquierdo .mano {
-  left: -10px;
-}
-
-#brazo-derecho .mano {
-  right: -10px;
+.brazo-izquierdo .mano {
+  left:
+    -15px;
 }
 
 
-/* SALUDO */
+.brazo-derecho .mano {
+  right:
+    -15px;
+}
 
-#ernesto.saludando
-#brazo-derecho {
+
+/* SALUDAR */
+
+#frailejon.saludando
+.brazo-derecho {
 
   animation:
-    saludo .35s
+    saludar
+    .35s
     infinite alternate;
-
 }
 
 
-@keyframes saludo {
+@keyframes saludar {
 
   from {
-    transform: rotate(-35deg);
+    transform:
+      rotate(-35deg);
   }
 
   to {
-    transform: rotate(-75deg);
+    transform:
+      rotate(-80deg);
   }
 
 }
 
 
-/* PIERNAS */
+/* ==========================
+   PIERNAS
+========================== */
 
 .pierna {
 
-  position: absolute;
+  position:
+    absolute;
 
-  top: 140px;
+  top:
+    145px;
 
-  width: 35px;
+  width:
+    34px;
 
-  height: 75px;
+  height:
+    65px;
 
   background:
-    #5d3d28;
+    #593a27;
 
   border-radius:
     0 0 20px 20px;
-
 }
 
 
-.pierna1 {
-  left: 80px;
-}
-
-.pierna2 {
-  right: 80px;
+.pierna-izquierda {
+  left:
+    82px;
 }
 
 
-/* ZAPATOS */
+.pierna-derecha {
+  right:
+    82px;
+}
+
 
 .zapato {
 
-  position: absolute;
+  position:
+    absolute;
 
-  top: 195px;
+  top:
+    195px;
 
-  width: 70px;
+  width:
+    70px;
 
-  height: 25px;
-
-  background:
-    #222;
+  height:
+    27px;
 
   border-radius:
     50%;
 
+  background:
+    #202020;
 }
 
 
-.zapato1 {
-  left: 55px;
-}
-
-.zapato2 {
-  right: 55px;
+.zapato-izquierdo {
+  left:
+    50px;
 }
 
 
-/* =============================
+.zapato-derecho {
+  right:
+    50px;
+}
+
+
+/* ==========================
    BAILAR
-   ============================= */
+========================== */
 
-#ernesto.bailando {
+#frailejon.bailando {
 
   animation:
-    bailar .5s
-    infinite alternate
-    ease-in-out;
-
+    baile
+    .55s
+    ease-in-out
+    infinite
+    alternate;
 }
 
 
-@keyframes bailar {
+@keyframes baile {
 
   from {
 
     transform:
       translateX(-50%)
-      rotate(-8deg)
+      rotate(-7deg)
       translateY(0);
 
   }
@@ -1151,7 +1304,7 @@ body {
 
     transform:
       translateX(-50%)
-      rotate(8deg)
+      rotate(7deg)
       translateY(-15px);
 
   }
@@ -1159,16 +1312,18 @@ body {
 }
 
 
-/* =============================
+/* ==========================
    CAMINAR
-   ============================= */
+========================== */
 
-#ernesto.caminando {
+#frailejon.caminando {
 
   animation:
-    caminar 1s
-    infinite alternate;
-
+    caminar
+    1.4s
+    ease-in-out
+    infinite
+    alternate;
 }
 
 
@@ -1177,42 +1332,47 @@ body {
   from {
 
     transform:
-      translateX(-50%)
-      translateX(-80px);
+      translateX(
+        calc(-50% - 130px)
+      );
 
   }
 
   to {
 
     transform:
-      translateX(-50%)
-      translateX(80px);
+      translateX(
+        calc(-50% + 130px)
+      );
 
   }
 
 }
 
 
-/* =============================
+/* ==========================
    BURBUJA
-   ============================= */
+========================== */
 
 #burbuja {
 
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 50;
+  z-index:
+    70;
 
-  top: 130px;
+  top:
+    120px;
 
-  left: 58%;
+  left:
+    60%;
 
-  max-width: 280px;
+  width:
+    min(280px, 35%);
 
-  padding: 18px 22px;
-
-  background:
-    white;
+  padding:
+    18px;
 
   border:
     4px solid #23734b;
@@ -1220,13 +1380,20 @@ body {
   border-radius:
     25px;
 
+  background:
+    white;
+
   color:
-    #174d35;
+    #174c35;
 
   font-weight:
     bold;
 
-  opacity: 0;
+  text-align:
+    center;
+
+  opacity:
+    0;
 
   transform:
     translateY(20px);
@@ -1236,184 +1403,137 @@ body {
 
   box-shadow:
     0 10px 25px #0003;
-
 }
 
 
 #burbuja.visible {
 
-  opacity: 1;
+  opacity:
+    1;
 
   transform:
     translateY(0);
-
 }
 
 
-/* =============================
+/* ==========================
    SUELO
-   ============================= */
+========================== */
 
 .suelo {
 
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 30;
+  z-index:
+    30;
 
-  bottom: 0;
+  bottom:
+    0;
 
-  width: 100%;
+  left:
+    0;
 
-  height: 120px;
+  width:
+    100%;
+
+  height:
+    110px;
 
   background:
     linear-gradient(
-      #528858,
-      #2e663e
+      #548957,
+      #2e653c
     );
-
 }
 
 
-.hierba {
+.plantas {
 
-  position: absolute;
+  position:
+    absolute;
 
-  top: -35px;
+  top:
+    -35px;
 
-  width: 100%;
+  left:
+    0;
 
-  font-size: 35px;
+  width:
+    100%;
 
-  white-space:
-    nowrap;
+  text-align:
+    center;
 
+  font-size:
+    32px;
+
+  letter-spacing:
+    8px;
 }
 
 
-/* =============================
-   MARIPOSAS
-   ============================= */
-
-.mariposa {
-
-  position: absolute;
-
-  z-index: 35;
-
-  font-size: 30px;
-
-  animation:
-    mariposa 7s
-    infinite linear;
-
-}
-
-
-.mariposa1 {
-  top: 45%;
-  left: 10%;
-}
-
-.mariposa2 {
-  top: 35%;
-  right: 10%;
-  animation-delay: -2s;
-}
-
-.mariposa3 {
-  top: 55%;
-  left: 75%;
-  animation-delay: -4s;
-}
-
-
-@keyframes mariposa {
-
-  0% {
-    transform:
-      translate(0,0)
-      rotate(-10deg);
-  }
-
-  25% {
-    transform:
-      translate(80px,-50px)
-      rotate(15deg);
-  }
-
-  50% {
-    transform:
-      translate(150px,20px)
-      rotate(-10deg);
-  }
-
-  75% {
-    transform:
-      translate(50px,70px)
-      rotate(10deg);
-  }
-
-  100% {
-    transform:
-      translate(0,0)
-      rotate(-10deg);
-  }
-
-}
-
-
-/* =============================
+/* ==========================
    LLUVIA
-   ============================= */
+========================== */
 
 #lluvia {
 
-  position: absolute;
+  position:
+    absolute;
 
-  inset: 0;
+  inset:
+    0;
 
-  z-index: 40;
+  z-index:
+    80;
 
   pointer-events:
     none;
 
-  opacity: 0;
+  opacity:
+    0;
 
+  transition:
+    opacity .3s;
 }
 
 
 #lluvia.activa {
-
-  opacity: 1;
-
+  opacity:
+    1;
 }
 
 
 .gota-lluvia {
 
-  position: absolute;
+  position:
+    absolute;
 
-  top: -30px;
+  top:
+    -30px;
 
-  width: 3px;
+  width:
+    3px;
 
-  height: 25px;
+  height:
+    25px;
 
   background:
-    #bdeeff;
+    #b8eaff;
 
-  border-radius: 5px;
+  border-radius:
+    10px;
 
   animation:
-    lluvia 0.7s
+    caer
+    .7s
     linear
     infinite;
-
 }
 
 
-@keyframes lluvia {
+@keyframes caer {
 
   to {
     transform:
@@ -1423,213 +1543,208 @@ body {
 }
 
 
-/* =============================
+/* ==========================
    GOTAS DE AGUA
-   ============================= */
+========================== */
 
-.gota {
+.gota-agua {
 
-  position: absolute;
+  position:
+    absolute;
 
-  z-index: 60;
+  z-index:
+    90;
 
-  font-size: 32px;
+  font-size:
+    34px;
 
-  cursor: pointer;
+  cursor:
+    pointer;
 
   animation:
-    gota 2s
+    flotarGota
+    1.5s
     ease-in-out
-    infinite alternate;
-
+    infinite
+    alternate;
 }
 
 
-@keyframes gota {
-
-  from {
-    transform:
-      translateY(0)
-      rotate(-10deg);
-  }
+@keyframes flotarGota {
 
   to {
     transform:
-      translateY(-20px)
-      rotate(10deg);
+      translateY(-18px)
+      rotate(8deg);
   }
 
 }
 
 
-/* =============================
+/* ==========================
    CONTROLES
-   ============================= */
+========================== */
 
 .controles {
 
-  display: flex;
+  display:
+    flex;
 
-  flex-wrap: wrap;
+  flex-wrap:
+    wrap;
 
-  justify-content: center;
+  justify-content:
+    center;
 
-  gap: 10px;
+  gap:
+    10px;
 
-  margin-top: 20px;
-
+  margin-top:
+    18px;
 }
 
 
 button {
 
-  border: 0;
+  border:
+    0;
 
-  padding: 13px 18px;
+  border-radius:
+    16px;
 
-  border-radius: 16px;
+  padding:
+    13px 17px;
 
   background:
     #23734b;
 
-  color: white;
+  color:
+    white;
 
-  font-size: 1rem;
+  font-size:
+    1rem;
 
-  font-weight: bold;
+  font-weight:
+    bold;
 
-  cursor: pointer;
+  cursor:
+    pointer;
 
   box-shadow:
     0 5px 12px #0003;
 
   transition:
     .2s;
-
 }
 
 
 button:hover {
 
   background:
-    #155435;
+    #165535;
 
   transform:
     translateY(-3px);
-
 }
 
 
-button:active {
-
-  transform:
-    scale(.95);
-
-}
-
-
-/* =============================
+/* ==========================
    MENSAJE
-   ============================= */
+========================== */
 
-.mensaje-final {
+.mensaje {
 
-  margin-top: 15px;
+  margin-top:
+    15px;
 
-  padding: 15px;
-
-  background:
-    #ffffffaa;
+  padding:
+    15px;
 
   border-radius:
     18px;
 
-}
+  background:
+    #ffffffaa;
 
-
-#mensaje {
+  text-align:
+    center;
 
   font-weight:
     bold;
-
 }
 
-
-/* FOOTER */
 
 footer {
 
-  margin-top: 15px;
+  text-align:
+    center;
 
-  text-align: center;
+  margin-top:
+    15px;
 
   color:
-    #174d35;
-
+    #174c35;
 }
 
 
-/* =============================
+/* ==========================
    NOCHE
-   ============================= */
+========================== */
 
-#app.noche
-#escenario
-.cielo {
+.app.noche .cielo {
 
   background:
     linear-gradient(
-      #101b3b,
-      #263c61 60%,
-      #345340 60%
+      #111b3b 0%,
+      #263b60 60%,
+      #36523e 60%,
+      #23442d 100%
     );
 
 }
 
 
-#app.noche #sol {
+.app.noche .sol {
 
-  opacity: 0;
-
+  opacity:
+    0;
 }
 
 
-#app.noche #luna {
+.app.noche .luna {
 
-  opacity: 1;
-
+  opacity:
+    1;
 }
 
 
-#app.noche .estrellas {
+.app.noche .estrellas {
 
-  opacity: 1;
-
+  opacity:
+    1;
 }
 
 
-#app.noche .nube {
+.app.noche .nube {
 
   filter:
     brightness(.35);
-
 }
 
 
-/* =============================
-   RESPONSIVE
-   ============================= */
+/* ==========================
+   CELULARES
+========================== */
 
-@media(max-width:700px) {
+@media(max-width: 700px) {
 
-  #app {
-
-    width: 96%;
-
+  .app {
+    width:
+      96%;
   }
 
 
-  .titulo {
+  .header {
 
     align-items:
       flex-start;
@@ -1637,7 +1752,7 @@ footer {
   }
 
 
-  .titulo h1 {
+  .header h1 {
 
     font-size:
       2rem;
@@ -1645,21 +1760,21 @@ footer {
   }
 
 
-  .titulo p {
+  .header p {
 
     font-size:
-      1rem;
+      .95rem;
 
   }
 
 
-  .marcador {
-
-    padding:
-      8px 12px;
+  .agua-contador {
 
     font-size:
       1rem;
+
+    padding:
+      8px 12px;
 
   }
 
@@ -1667,19 +1782,19 @@ footer {
   #escenario {
 
     height:
-      560px;
+      570px;
 
   }
 
 
-  #ernesto {
+  #frailejon {
 
     transform:
       translateX(-50%)
-      scale(.8);
+      scale(.78);
 
-    bottom:
-      60px;
+    transform-origin:
+      bottom center;
 
   }
 
@@ -1687,16 +1802,16 @@ footer {
   #burbuja {
 
     top:
-      80px;
+      70px;
 
     left:
       50%;
 
-    transform:
-      translateX(-50%);
-
     width:
       230px;
+
+    transform:
+      translateX(-50%);
 
   }
 
@@ -1710,13 +1825,21 @@ footer {
   }
 
 
-  .controles button {
+  .nube {
 
     font-size:
-      .9rem;
+      45px;
 
-    padding:
-      11px 13px;
+  }
+
+
+  .sol {
+
+    font-size:
+      48px;
+
+    right:
+      20px;
 
   }
 
