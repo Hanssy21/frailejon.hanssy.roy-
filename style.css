@@ -1,0 +1,768 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+
+  font-family: Arial, sans-serif;
+
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      #77c9ec,
+      #c7efd8
+    );
+
+  overflow-x: hidden;
+}
+
+
+.pagina {
+
+  width: 100%;
+
+  max-width: 1000px;
+
+  margin: auto;
+
+  padding: 25px;
+
+  text-align: center;
+}
+
+
+/* TÍTULO */
+
+h1 {
+
+  color: #174c35;
+
+  font-size:
+    clamp(2rem, 5vw, 3.5rem);
+
+  margin-bottom: 8px;
+}
+
+
+header p {
+
+  font-size: 1.3rem;
+
+  color: #24543d;
+
+  min-height: 35px;
+}
+
+
+/* ESCENARIO */
+
+.escenario {
+
+  position: relative;
+
+  height: 600px;
+
+  margin-top: 20px;
+
+  overflow: hidden;
+
+  border-radius: 35px;
+
+  background:
+    linear-gradient(
+      #72c7e9 0%,
+      #c9eddb 65%,
+      #679b63 65%,
+      #3c7447 100%
+    );
+
+  box-shadow:
+    0 20px 40px
+    rgba(0,0,0,.2);
+}
+
+
+/* SOL */
+
+.sol {
+
+  position: absolute;
+
+  top: 30px;
+
+  right: 50px;
+
+  font-size: 65px;
+
+  animation:
+    girarSol 10s linear infinite;
+}
+
+
+@keyframes girarSol {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* NUBES */
+
+.nube {
+
+  position: absolute;
+
+  font-size: 70px;
+
+  opacity: .8;
+
+  animation:
+    moverNube 8s
+    ease-in-out
+    infinite alternate;
+}
+
+
+.nube1 {
+
+  top: 40px;
+  left: 40px;
+
+}
+
+
+.nube2 {
+
+  top: 100px;
+  right: 180px;
+
+  animation-delay: 2s;
+
+}
+
+
+@keyframes moverNube {
+
+  from {
+
+    transform:
+      translateX(-10px);
+
+  }
+
+  to {
+
+    transform:
+      translateX(30px);
+
+  }
+
+}
+
+
+/* MONTAÑAS */
+
+.montana {
+
+  position: absolute;
+
+  bottom: 0;
+
+  width: 0;
+
+  height: 0;
+
+  border-left:
+    300px solid transparent;
+
+  border-right:
+    300px solid transparent;
+}
+
+
+.montana-atras {
+
+  left: -180px;
+
+  border-bottom:
+    350px solid #568b61;
+
+}
+
+
+.montana-frente {
+
+  right: -200px;
+
+  border-bottom:
+    280px solid #3d724b;
+
+}
+
+
+/* ERNESTO */
+
+#ernesto {
+
+  position: absolute;
+
+  z-index: 10;
+
+  left: 50%;
+
+  bottom: 20px;
+
+  width: 300px;
+
+  transform:
+    translateX(-50%);
+
+  transform-origin:
+    bottom center;
+
+  transition:
+    transform .3s;
+}
+
+
+.personaje {
+
+  width: 100%;
+
+  overflow: visible;
+}
+
+
+/* HOJAS */
+
+.hojas ellipse {
+
+  fill: #86ad72;
+
+  stroke: #57784e;
+
+  stroke-width: 5;
+
+  filter:
+    drop-shadow(
+      2px 4px 2px
+      rgba(0,0,0,.15)
+    );
+}
+
+
+/* CARA */
+
+.cara {
+
+  fill: #d5e5a5;
+
+  stroke: #58734b;
+
+  stroke-width: 6;
+
+  filter:
+    drop-shadow(
+      3px 5px 3px
+      rgba(0,0,0,.2)
+    );
+}
+
+
+/* PELOS */
+
+.pelitos circle {
+
+  fill: #a8bd80;
+
+  stroke: #607c51;
+
+  stroke-width: 3;
+}
+
+
+/* OJOS */
+
+.ojo {
+
+  fill: #202820;
+}
+
+
+/* NARIZ */
+
+.nariz {
+
+  fill: #b9cc8b;
+
+  stroke: #64784e;
+
+  stroke-width: 3;
+}
+
+
+/* BOCA */
+
+.boca {
+
+  fill: none;
+
+  stroke: #55382d;
+
+  stroke-width: 7;
+
+  stroke-linecap: round;
+}
+
+
+/* CUERPO */
+
+.tronco {
+
+  fill: #795436;
+
+  stroke: #563b29;
+
+  stroke-width: 5;
+}
+
+
+/* BRAZOS */
+
+.brazo {
+
+  fill: none;
+
+  stroke: #795436;
+
+  stroke-width: 22;
+
+  stroke-linecap: round;
+}
+
+
+/* MANOS */
+
+.mano {
+
+  fill: #d5e5a5;
+
+  stroke: #58734b;
+
+  stroke-width: 4;
+}
+
+
+/* PIERNAS */
+
+.pierna {
+
+  fill: none;
+
+  stroke: #62422e;
+
+  stroke-width: 17;
+
+  stroke-linecap: round;
+}
+
+
+/* ZAPATOS */
+
+.zapato {
+
+  fill: #262626;
+}
+
+
+/* HIERBA */
+
+.hierba {
+
+  position: absolute;
+
+  z-index: 20;
+
+  bottom: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  font-size: 35px;
+
+  letter-spacing: 8px;
+}
+
+
+/* BOTONES */
+
+.controles {
+
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 15px;
+
+  margin-top: 20px;
+}
+
+
+button {
+
+  border: none;
+
+  padding: 14px 25px;
+
+  border-radius: 20px;
+
+  background: #23734b;
+
+  color: white;
+
+  font-size: 1.05rem;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 12px
+    rgba(0,0,0,.2);
+
+  transition:
+    transform .2s,
+    background .2s;
+}
+
+
+button:hover {
+
+  background: #185638;
+
+  transform:
+    translateY(-4px);
+}
+
+
+button:active {
+
+  transform:
+    scale(.95);
+}
+
+
+/* ==========================
+   BURBUJA
+   ========================== */
+
+.burbuja {
+
+  position: absolute;
+
+  z-index: 30;
+
+  left: 50%;
+
+  top: 120px;
+
+  transform:
+    translateX(120px);
+
+  max-width: 230px;
+
+  padding: 15px 20px;
+
+  background: white;
+
+  color: #174c35;
+
+  border: 4px solid #23734b;
+
+  border-radius: 25px;
+
+  font-size: 1rem;
+
+  font-weight: bold;
+
+  box-shadow:
+    0 8px 20px
+    rgba(0,0,0,.2);
+
+  opacity: 0;
+
+  transition:
+    opacity .3s,
+    transform .3s;
+}
+
+
+.burbuja::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: -15px;
+
+  top: 35px;
+
+  width: 25px;
+
+  height: 25px;
+
+  background: white;
+
+  border-left:
+    4px solid #23734b;
+
+  border-bottom:
+    4px solid #23734b;
+
+  transform:
+    rotate(45deg);
+}
+
+
+.burbuja.visible {
+
+  opacity: 1;
+
+  transform:
+    translateX(120px)
+    translateY(-10px);
+}
+
+
+/* ==========================
+   ERNESTO HABLANDO
+   ========================== */
+
+#ernesto.hablando {
+
+  animation:
+    hablarMovimiento
+    .25s
+    infinite alternate;
+}
+
+
+@keyframes hablarMovimiento {
+
+  from {
+
+    transform:
+      translateX(-50%)
+      scale(1);
+
+  }
+
+  to {
+
+    transform:
+      translateX(-50%)
+      scale(1.025);
+
+  }
+
+}
+
+
+/* BOCA */
+
+#ernesto.hablando #boca {
+
+  animation:
+    moverBoca
+    .18s
+    infinite alternate;
+}
+
+
+@keyframes moverBoca {
+
+  from {
+
+    transform:
+      scaleY(.5);
+
+    transform-origin:
+      center;
+
+  }
+
+  to {
+
+    transform:
+      scaleY(1.5);
+
+    transform-origin:
+      center;
+
+  }
+
+}
+
+
+/* ==========================
+   BAILAR
+   ========================== */
+
+#ernesto.bailando {
+
+  animation:
+    baile
+    .5s
+    infinite alternate
+    ease-in-out;
+}
+
+
+@keyframes baile {
+
+  from {
+
+    transform:
+      translateX(-50%)
+      rotate(-7deg);
+
+  }
+
+  to {
+
+    transform:
+      translateX(-50%)
+      rotate(7deg);
+
+  }
+
+}
+
+
+/* ==========================
+   SALUDAR
+   ========================== */
+
+#ernesto.saludando #brazoDer {
+
+  animation:
+    saludo
+    .35s
+    infinite alternate;
+}
+
+
+@keyframes saludo {
+
+  from {
+
+    transform:
+      rotate(0deg);
+
+    transform-origin:
+      185px 250px;
+
+  }
+
+  to {
+
+    transform:
+      rotate(-35deg);
+
+    transform-origin:
+      185px 250px;
+
+  }
+
+}
+
+
+/* FOOTER */
+
+footer {
+
+  margin-top: 20px;
+
+  color: #174c35;
+
+  font-weight: bold;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+  .pagina {
+
+    padding: 12px;
+
+  }
+
+
+  .escenario {
+
+    height: 500px;
+
+  }
+
+
+  #ernesto {
+
+    width: 250px;
+
+  }
+
+
+  .sol {
+
+    font-size: 45px;
+
+    right: 20px;
+
+  }
+
+
+  .nube {
+
+    font-size: 45px;
+
+  }
+
+
+  .burbuja {
+
+    top: 70px;
+
+    left: 50%;
+
+    transform:
+      translateX(-50%);
+
+    width: 220px;
+
+  }
+
+
+  .burbuja.visible {
+
+    transform:
+      translateX(-50%)
+      translateY(-10px);
+
+  }
+
+}

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Frailejón Ernesto Pérez by HANSSY ROY 🌿</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="pagina">
+
+    <header>
+      <h1>🌿 Frailejón Ernesto Pérez por HANSSY ROY </h1>
+
+      <p id="texto">
+        ¡Hola! Soy Ernesto Pérez.
+      </p>
+    </header>
+
+
+    <section class="escenario">
+
+      <!-- Sol -->
+      <div class="sol">☀️</div>
+
+      <!-- Nubes -->
+      <div class="nube nube1">☁️</div>
+      <div class="nube nube2">☁️</div>
+
+
+      <!-- Montañas -->
+      <div class="montana montana-atras"></div>
+      <div class="montana montana-frente"></div>
+
+
+      <!-- Burbuja de diálogo -->
+      <div id="burbuja" class="burbuja">
+        ¡Hola! 🌿
+      </div>
+
+
+      <!-- ERNESTO -->
+      <div id="ernesto">
+
+        <svg
+          viewBox="0 0 300 430"
+          class="personaje"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+
+          <!-- Hojas -->
+
+          <g class="hojas">
+
+            <ellipse
+              cx="150"
+              cy="65"
+              rx="28"
+              ry="75"
+              transform="rotate(-55 150 65)"
+            />
+
+            <ellipse
+              cx="150"
+              cy="55"
+              rx="28"
+              ry="80"
+              transform="rotate(-30 150 55)"
+            />
+
+            <ellipse
+              cx="150"
+              cy="48"
+              rx="27"
+              ry="85"
+            />
+
+            <ellipse
+              cx="150"
+              cy="55"
+              rx="28"
+              ry="80"
+              transform="rotate(30 150 55)"
+            />
+
+            <ellipse
+              cx="150"
+              cy="65"
+              rx="28"
+              ry="75"
+              transform="rotate(55 150 65)"
+            />
+
+            <ellipse
+              cx="150"
+              cy="80"
+              rx="25"
+              ry="75"
+              transform="rotate(-75 150 80)"
+            />
+
+            <ellipse
+              cx="150"
+              cy="80"
+              rx="25"
+              ry="75"
+              transform="rotate(75 150 80)"
+            />
+
+          </g>
+
+
+          <!-- Cara -->
+
+          <ellipse
+            cx="150"
+            cy="170"
+            rx="76"
+            ry="70"
+            class="cara"
+          />
+
+
+          <!-- Pelitos -->
+
+          <g class="pelitos">
+
+            <circle cx="95" cy="125" r="9"/>
+            <circle cx="110" cy="110" r="8"/>
+            <circle cx="130" cy="103" r="8"/>
+            <circle cx="150" cy="100" r="9"/>
+            <circle cx="170" cy="103" r="8"/>
+            <circle cx="190" cy="110" r="8"/>
+            <circle cx="205" cy="125" r="9"/>
+
+          </g>
+
+
+          <!-- Ojos -->
+
+          <ellipse
+            cx="123"
+            cy="165"
+            rx="9"
+            ry="13"
+            class="ojo"
+          />
+
+          <ellipse
+            cx="177"
+            cy="165"
+            rx="9"
+            ry="13"
+            class="ojo"
+          />
+
+
+          <!-- Brillos -->
+
+          <circle cx="120" cy="161" r="3" fill="white"/>
+          <circle cx="174" cy="161" r="3" fill="white"/>
+
+
+          <!-- Nariz -->
+
+          <path
+            d="M150 168 Q140 180 150 185 Q160 180 150 168"
+            class="nariz"
+          />
+
+
+          <!-- Boca -->
+
+          <path
+            id="boca"
+            d="M125 195 Q150 215 175 195"
+            class="boca"
+          />
+
+
+          <!-- Cuerpo -->
+
+          <path
+            d="M120 235
+               Q150 220 180 235
+               L190 350
+               Q150 370 110 350
+               Z"
+            class="tronco"
+          />
+
+
+          <!-- Brazos -->
+
+          <path
+            id="brazoIzq"
+            d="M115 250 Q65 275 70 325"
+            class="brazo"
+          />
+
+          <path
+            id="brazoDer"
+            d="M185 250 Q235 275 230 325"
+            class="brazo"
+          />
+
+
+          <!-- Manos -->
+
+          <circle
+            cx="70"
+            cy="325"
+            r="13"
+            class="mano"
+          />
+
+          <circle
+            cx="230"
+            cy="325"
+            r="13"
+            class="mano"
+          />
+
+
+          <!-- Piernas -->
+
+          <path
+            d="M125 345 L115 395"
+            class="pierna"
+          />
+
+          <path
+            d="M175 345 L185 395"
+            class="pierna"
+          />
+
+
+          <!-- Zapatos -->
+
+          <ellipse
+            cx="110"
+            cy="400"
+            rx="35"
+            ry="14"
+            class="zapato"
+          />
+
+          <ellipse
+            cx="190"
+            cy="400"
+            rx="35"
+            ry="14"
+            class="zapato"
+          />
+
+        </svg>
+
+      </div>
+
+
+      <!-- Hierba -->
+
+      <div class="hierba">
+        🌱 🌿 🌱 🌿 🌱 🌿 🌱
+      </div>
+
+    </section>
+
+
+    <!-- BOTONES -->
+
+    <div class="controles">
+
+      <button id="hola">
+        👋 Saludar
+      </button>
+
+      <button id="bailar">
+        💃 Bailar
+      </button>
+
+      <button id="hablar">
+        🗣️ ¡Hazlo hablar!
+      </button>
+
+    </div>
+
+
+    <footer>
+
+      <p>
+        🌱 Cuidemos nuestros páramos y nuestra naturaleza 🇨🇴
+      </p>
+
+    </footer>
+
+  </div>
+
+
+  <!-- JavaScript -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
