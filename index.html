@@ -4,304 +4,263 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Frailejón Ernesto Pérez by HANSSY ROY 🌿</title>
+  <title>Ernesto y el Páramo BY HANSSY ROY 🌿</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="pagina">
+  <div id="app">
 
-    <header>
-      <h1>🌿 Frailejón Ernesto Pérez por HANSSY ROY </h1>
+    <!-- ENCABEZADO -->
 
-      <p id="texto">
-        ¡Hola! Soy Ernesto Pérez.
-      </p>
+    <header class="titulo">
+      <div>
+        <span class="mini-hoja">🌿</span>
+        <h1>Ernesto y el Páramo POR HANSSY ROY </h1>
+        <p id="subtitulo">¡Bienvenido al páramo!</p>
+      </div>
+
+      <div class="marcador">
+        💧 <span id="agua">0</span>
+      </div>
     </header>
 
 
-    <section class="escenario">
+    <!-- ESCENARIO -->
 
-      <!-- Sol -->
-      <div class="sol">☀️</div>
+    <main id="escenario">
 
-      <!-- Nubes -->
-      <div class="nube nube1">☁️</div>
-      <div class="nube nube2">☁️</div>
+      <!-- CIELO -->
+
+      <div class="cielo"></div>
+
+      <div id="sol">☀️</div>
+
+      <div id="luna">🌙</div>
+
+      <div class="estrellas">
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+      </div>
 
 
-      <!-- Montañas -->
-      <div class="montana montana-atras"></div>
-      <div class="montana montana-frente"></div>
+      <!-- NUBES -->
+
+      <div class="nube nube-a">☁️</div>
+      <div class="nube nube-b">☁️</div>
 
 
-      <!-- Burbuja de diálogo -->
-      <div id="burbuja" class="burbuja">
+      <!-- MONTAÑAS -->
+
+      <div class="montanas montana-lejana"></div>
+      <div class="montanas montana-media"></div>
+      <div class="montanas montana-cerca"></div>
+
+
+      <!-- NIEBLA -->
+
+      <div class="niebla"></div>
+
+
+      <!-- LLUVIA -->
+
+      <div id="lluvia"></div>
+
+
+      <!-- MARIPOSAS -->
+
+      <div class="mariposa mariposa1">🦋</div>
+      <div class="mariposa mariposa2">🦋</div>
+      <div class="mariposa mariposa3">🦋</div>
+
+
+      <!-- BURBUJA -->
+
+      <div id="burbuja">
         ¡Hola! 🌿
       </div>
 
 
       <!-- ERNESTO -->
+
       <div id="ernesto">
 
-        <svg
-          viewBox="0 0 300 430"
-          class="personaje"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <div class="hojas">
 
-          <!-- Hojas -->
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
 
-          <g class="hojas">
-
-            <ellipse
-              cx="150"
-              cy="65"
-              rx="28"
-              ry="75"
-              transform="rotate(-55 150 65)"
-            />
-
-            <ellipse
-              cx="150"
-              cy="55"
-              rx="28"
-              ry="80"
-              transform="rotate(-30 150 55)"
-            />
-
-            <ellipse
-              cx="150"
-              cy="48"
-              rx="27"
-              ry="85"
-            />
-
-            <ellipse
-              cx="150"
-              cy="55"
-              rx="28"
-              ry="80"
-              transform="rotate(30 150 55)"
-            />
-
-            <ellipse
-              cx="150"
-              cy="65"
-              rx="28"
-              ry="75"
-              transform="rotate(55 150 65)"
-            />
-
-            <ellipse
-              cx="150"
-              cy="80"
-              rx="25"
-              ry="75"
-              transform="rotate(-75 150 80)"
-            />
-
-            <ellipse
-              cx="150"
-              cy="80"
-              rx="25"
-              ry="75"
-              transform="rotate(75 150 80)"
-            />
-
-          </g>
+        </div>
 
 
-          <!-- Cara -->
+        <!-- CABEZA -->
 
-          <ellipse
-            cx="150"
-            cy="170"
-            rx="76"
-            ry="70"
-            class="cara"
-          />
+        <div class="cabeza">
 
-
-          <!-- Pelitos -->
-
-          <g class="pelitos">
-
-            <circle cx="95" cy="125" r="9"/>
-            <circle cx="110" cy="110" r="8"/>
-            <circle cx="130" cy="103" r="8"/>
-            <circle cx="150" cy="100" r="9"/>
-            <circle cx="170" cy="103" r="8"/>
-            <circle cx="190" cy="110" r="8"/>
-            <circle cx="205" cy="125" r="9"/>
-
-          </g>
+          <div class="pelos">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
 
 
-          <!-- Ojos -->
+          <div class="ojo ojo1">
+            <span></span>
+          </div>
 
-          <ellipse
-            cx="123"
-            cy="165"
-            rx="9"
-            ry="13"
-            class="ojo"
-          />
-
-          <ellipse
-            cx="177"
-            cy="165"
-            rx="9"
-            ry="13"
-            class="ojo"
-          />
+          <div class="ojo ojo2">
+            <span></span>
+          </div>
 
 
-          <!-- Brillos -->
-
-          <circle cx="120" cy="161" r="3" fill="white"/>
-          <circle cx="174" cy="161" r="3" fill="white"/>
+          <div class="mejilla mejilla1"></div>
+          <div class="mejilla mejilla2"></div>
 
 
-          <!-- Nariz -->
+          <div class="nariz"></div>
 
-          <path
-            d="M150 168 Q140 180 150 185 Q160 180 150 168"
-            class="nariz"
-          />
+          <div id="boca"></div>
 
-
-          <!-- Boca -->
-
-          <path
-            id="boca"
-            d="M125 195 Q150 215 175 195"
-            class="boca"
-          />
+        </div>
 
 
-          <!-- Cuerpo -->
+        <!-- CUERPO -->
 
-          <path
-            d="M120 235
-               Q150 220 180 235
-               L190 350
-               Q150 370 110 350
-               Z"
-            class="tronco"
-          />
+        <div class="cuerpo">
 
-
-          <!-- Brazos -->
-
-          <path
-            id="brazoIzq"
-            d="M115 250 Q65 275 70 325"
+          <div
+            id="brazo-izquierdo"
             class="brazo"
-          />
+          >
+            <div class="mano">
+              🌿
+            </div>
+          </div>
 
-          <path
-            id="brazoDer"
-            d="M185 250 Q235 275 230 325"
+
+          <div
+            id="brazo-derecho"
             class="brazo"
-          />
+          >
+            <div class="mano">
+              🌿
+            </div>
+          </div>
 
 
-          <!-- Manos -->
+          <div class="tronco">
 
-          <circle
-            cx="70"
-            cy="325"
-            r="13"
-            class="mano"
-          />
+            <div class="textura"></div>
 
-          <circle
-            cx="230"
-            cy="325"
-            r="13"
-            class="mano"
-          />
+          </div>
 
 
-          <!-- Piernas -->
-
-          <path
-            d="M125 345 L115 395"
-            class="pierna"
-          />
-
-          <path
-            d="M175 345 L185 395"
-            class="pierna"
-          />
+          <div class="pierna pierna1"></div>
+          <div class="pierna pierna2"></div>
 
 
-          <!-- Zapatos -->
+          <div class="zapato zapato1"></div>
+          <div class="zapato zapato2"></div>
 
-          <ellipse
-            cx="110"
-            cy="400"
-            rx="35"
-            ry="14"
-            class="zapato"
-          />
-
-          <ellipse
-            cx="190"
-            cy="400"
-            rx="35"
-            ry="14"
-            class="zapato"
-          />
-
-        </svg>
+        </div>
 
       </div>
 
 
-      <!-- Hierba -->
+      <!-- SUELO -->
 
-      <div class="hierba">
-        🌱 🌿 🌱 🌿 🌱 🌿 🌱
+      <div class="suelo">
+
+        <div class="hierba">
+          🌿 🌱 🌿 🌱 🌿 🌿 🌱 🌿 🌱 🌿
+        </div>
+
       </div>
+
+
+      <!-- GOTAS -->
+
+      <div id="gotas"></div>
+
+    </main>
+
+
+    <!-- CONTROLES -->
+
+    <section class="controles">
+
+      <button id="btnSaludar">
+        👋 Saludar
+      </button>
+
+      <button id="btnHablar">
+        🗣️ Hablar
+      </button>
+
+      <button id="btnBailar">
+        💃 Bailar
+      </button>
+
+      <button id="btnCaminar">
+        🚶 Caminar
+      </button>
+
+      <button id="btnLluvia">
+        🌧️ Lluvia
+      </button>
+
+      <button id="btnNoche">
+        🌙 Noche
+      </button>
+
+      <button id="btnAgua">
+        💧 Crear agua
+      </button>
 
     </section>
 
 
-    <!-- BOTONES -->
+    <!-- MENSAJE -->
 
-    <div class="controles">
+    <div class="mensaje-final">
 
-      <button id="hola">
-        👋 Saludar
-      </button>
-
-      <button id="bailar">
-        💃 Bailar
-      </button>
-
-      <button id="hablar">
-        🗣️ ¡Hazlo hablar!
-      </button>
+      <p id="mensaje">
+        Ayuda a cuidar el páramo.
+      </p>
 
     </div>
 
 
     <footer>
 
-      <p>
-        🌱 Cuidemos nuestros páramos y nuestra naturaleza 🇨🇴
-      </p>
+      🌿 Proyecto educativo hecho con
+      HTML, CSS y JavaScript 🇨🇴
 
     </footer>
 
   </div>
 
-
-  <!-- JavaScript -->
 
   <script src="script.js"></script>
 

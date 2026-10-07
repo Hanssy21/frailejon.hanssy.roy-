@@ -1,152 +1,159 @@
+const app =
+  document.getElementById("app");
+
 const ernesto =
   document.getElementById("ernesto");
 
 const texto =
-  document.getElementById("texto");
+  document.getElementById("subtitulo");
 
-const boca =
-  document.getElementById("boca");
+const mensaje =
+  document.getElementById("mensaje");
 
 const burbuja =
   document.getElementById("burbuja");
 
+const agua =
+  document.getElementById("agua");
 
-const botonHola =
-  document.getElementById("hola");
-
-const botonBailar =
-  document.getElementById("bailar");
-
-const botonHablar =
-  document.getElementById("hablar");
+const lluvia =
+  document.getElementById("lluvia");
 
 
-// =================================
-// FRASES DE ERNESTO
-// =================================
+const btnSaludar =
+  document.getElementById("btnSaludar");
+
+const btnHablar =
+  document.getElementById("btnHablar");
+
+const btnBailar =
+  document.getElementById("btnBailar");
+
+const btnCaminar =
+  document.getElementById("btnCaminar");
+
+const btnLluvia =
+  document.getElementById("btnLluvia");
+
+const btnNoche =
+  document.getElementById("btnNoche");
+
+const btnAgua =
+  document.getElementById("btnAgua");
+
+
+let puntos = 0;
+
+let bailando = false;
+
+let caminando = false;
+
+let esNoche = false;
+
+let estaLloviendo = false;
+
+
+// ======================================
+// FRASES
+// ======================================
 
 const frases = [
 
   "¡Hola! Soy Ernesto Pérez.",
 
-  "¡Qué bonito está nuestro páramo!",
+  "¡Qué hermoso está nuestro páramo!",
 
-  "¡Los frailejones ayudan a cuidar el agua!",
+  "¡El agua es vida!",
 
-  "¡Cuidemos la naturaleza!",
+  "¡Cuidemos los frailejones!",
 
-  "¡Colombia es maravillosa!",
+  "¡Protejamos nuestra naturaleza!",
 
-  "¡Protejamos nuestros páramos!",
+  "¡Los páramos son muy importantes!",
 
-  "¡Un abrazo verde para todos!",
+  "¡Qué bonito es Colombia!",
 
-  "¡Hay que cuidar el agua!",
+  "¡Vamos a cuidar el agua!",
 
-  "¡Viva la naturaleza!"
+  "¡Un saludo verde para todos!"
 ];
 
 
-// =================================
-// FUNCIÓN PARA HABLAR
-// =================================
+// ======================================
+// HABLAR
+// ======================================
 
 function hablar(frase) {
 
-  // Mostrar texto arriba
+  texto.textContent =
+    frase;
 
-  texto.textContent = frase;
+  mensaje.textContent =
+    frase;
+
+  burbuja.textContent =
+    frase;
+
+  burbuja.classList.add(
+    "visible"
+  );
 
 
-  // Mostrar burbuja
+  if (
+    "speechSynthesis"
+    in window
+  ) {
 
-  burbuja.textContent = frase;
-
-  burbuja.classList.add("visible");
+    speechSynthesis.cancel();
 
 
-  // Comprobar si el navegador
-  // tiene síntesis de voz
+    const voz =
+      new SpeechSynthesisUtterance(
+        frase
+      );
 
-  if (!("speechSynthesis" in window)) {
 
-    console.log(
-      "Este navegador no tiene síntesis de voz."
+    voz.lang =
+      "es-CO";
+
+    voz.pitch =
+      1.2;
+
+    voz.rate =
+      .9;
+
+    voz.volume =
+      1;
+
+
+    ernesto.classList.add(
+      "hablando"
     );
 
-    return;
+
+    voz.onend = () => {
+
+      ernesto.classList.remove(
+        "hablando"
+      );
+
+    };
+
+
+    speechSynthesis.speak(
+      voz
+    );
+
   }
 
-
-  // Detener una voz anterior
-
-  window.speechSynthesis.cancel();
-
-
-  // Crear voz
-
-  const voz =
-    new SpeechSynthesisUtterance(frase);
-
-
-  // Español colombiano
-
-  voz.lang = "es-CO";
-
-
-  // Voz alegre
-
-  voz.pitch = 1.25;
-
-
-  // Velocidad
-
-  voz.rate = 0.9;
-
-
-  // Volumen
-
-  voz.volume = 1;
-
-
-  // Cuando comienza
-
-  voz.onstart = () => {
-
-    ernesto.classList.add("hablando");
-
-  };
-
-
-  // Cuando termina
-
-  voz.onend = () => {
-
-    ernesto.classList.remove("hablando");
-
-  };
-
-
-  // Si ocurre un error
-
-  voz.onerror = () => {
-
-    ernesto.classList.remove("hablando");
-
-  };
-
-
-  // Hablar
-
-  window.speechSynthesis.speak(voz);
 }
 
 
-// =================================
-// BOTÓN SALUDAR
-// =================================
+// ======================================
+// SALUDAR
+// ======================================
 
-botonHola.addEventListener(
+btnSaludar.addEventListener(
   "click",
   () => {
 
@@ -154,9 +161,8 @@ botonHola.addEventListener(
       "saludando"
     );
 
-
     hablar(
-      "¡Hola, amiguito! ¡Soy Ernesto Pérez!"
+      "¡Hola! ¡Qué alegría verte por aquí!"
     );
 
 
@@ -166,26 +172,25 @@ botonHola.addEventListener(
         "saludando"
       );
 
-    }, 1800);
+    }, 2000);
 
   }
 );
 
 
-// =================================
-// BOTÓN HABLAR
-// =================================
+// ======================================
+// HABLAR
+// ======================================
 
-botonHablar.addEventListener(
+btnHablar.addEventListener(
   "click",
   () => {
 
     const numero =
       Math.floor(
-        Math.random() *
-        frases.length
+        Math.random()
+        * frases.length
       );
-
 
     hablar(
       frases[numero]
@@ -195,18 +200,16 @@ botonHablar.addEventListener(
 );
 
 
-// =================================
-// BOTÓN BAILAR
-// =================================
+// ======================================
+// BAILAR
+// ======================================
 
-let bailando = false;
-
-
-botonBailar.addEventListener(
+btnBailar.addEventListener(
   "click",
   () => {
 
-    bailando = !bailando;
+    bailando =
+      !bailando;
 
 
     if (bailando) {
@@ -215,9 +218,8 @@ botonBailar.addEventListener(
         "bailando"
       );
 
-
       hablar(
-        "¡A bailar en el páramo!"
+        "¡Vamos a bailar!"
       );
 
     } else {
@@ -226,9 +228,8 @@ botonBailar.addEventListener(
         "bailando"
       );
 
-
       hablar(
-        "¡Eso estuvo divertido!"
+        "¡Qué divertido!"
       );
 
     }
@@ -237,14 +238,334 @@ botonBailar.addEventListener(
 );
 
 
-// =================================
-// OCULTAR BURBUJA
-// =================================
+// ======================================
+// CAMINAR
+// ======================================
 
-setTimeout(() => {
+btnCaminar.addEventListener(
+  "click",
+  () => {
 
-  burbuja.classList.remove(
-    "visible"
+    caminando =
+      !caminando;
+
+
+    if (caminando) {
+
+      ernesto.classList.add(
+        "caminando"
+      );
+
+      hablar(
+        "¡Vamos a explorar el páramo!"
+      );
+
+    } else {
+
+      ernesto.classList.remove(
+        "caminando"
+      );
+
+      hablar(
+        "¡Me quedo aquí un momento!"
+      );
+
+    }
+
+  }
+);
+
+
+// ======================================
+// NOCHE
+// ======================================
+
+btnNoche.addEventListener(
+  "click",
+  () => {
+
+    esNoche =
+      !esNoche;
+
+
+    if (esNoche) {
+
+      app.classList.add(
+        "noche"
+      );
+
+      btnNoche.textContent =
+        "☀️ Día";
+
+      hablar(
+        "¡Llegó la noche al páramo!"
+      );
+
+    } else {
+
+      app.classList.remove(
+        "noche"
+      );
+
+      btnNoche.textContent =
+        "🌙 Noche";
+
+      hablar(
+        "¡Buenos días, páramo!"
+      );
+
+    }
+
+  }
+);
+
+
+// ======================================
+// LLUVIA
+// ======================================
+
+function crearLluvia() {
+
+  lluvia.innerHTML =
+    "";
+
+
+  for (
+    let i = 0;
+    i < 90;
+    i++
+  ) {
+
+    const gota =
+      document.createElement(
+        "div"
+      );
+
+
+    gota.className =
+      "gota-lluvia";
+
+
+    gota.style.left =
+      Math.random()
+      * 100
+      + "%";
+
+
+    gota.style.animationDelay =
+      Math.random()
+      * 1
+      + "s";
+
+
+    gota.style.opacity =
+      .3 +
+      Math.random()
+      * .7;
+
+
+    lluvia.appendChild(
+      gota
+    );
+
+  }
+
+}
+
+
+crearLluvia();
+
+
+btnLluvia.addEventListener(
+  "click",
+  () => {
+
+    estaLloviendo =
+      !estaLloviendo;
+
+
+    if (estaLloviendo) {
+
+      lluvia.classList.add(
+        "activa"
+      );
+
+      btnLluvia.textContent =
+        "☀️ Parar lluvia";
+
+      hablar(
+        "¡Está lloviendo! El páramo está feliz."
+      );
+
+    } else {
+
+      lluvia.classList.remove(
+        "activa"
+      );
+
+      btnLluvia.textContent =
+        "🌧️ Lluvia";
+
+      hablar(
+        "La lluvia terminó."
+      );
+
+    }
+
+  }
+);
+
+
+// ======================================
+// CREAR GOTAS DE AGUA
+// ======================================
+
+function crearGota() {
+
+  const gota =
+    document.createElement(
+      "div"
+    );
+
+
+  gota.className =
+    "gota";
+
+  gota.textContent =
+    "💧";
+
+
+  gota.style.left =
+    (10 + Math.random() * 80)
+    + "%";
+
+
+  gota.style.top =
+    (20 + Math.random() * 55)
+    + "%";
+
+
+  document
+    .getElementById("escenario")
+    .appendChild(gota);
+
+
+  gota.addEventListener(
+    "click",
+    () => {
+
+      puntos++;
+
+      agua.textContent =
+        puntos;
+
+
+      gota.remove();
+
+
+      mensaje.textContent =
+        "💧 ¡Encontraste agua!";
+
+
+      hablar(
+        "¡Encontraste una gota de agua!"
+      );
+
+    }
   );
 
-}, 4000);
+
+  setTimeout(() => {
+
+    if (
+      document.body.contains(
+        gota
+      )
+    ) {
+
+      gota.remove();
+
+    }
+
+  }, 6000);
+
+}
+
+
+btnAgua.addEventListener(
+  "click",
+  () => {
+
+    crearGota();
+
+    mensaje.textContent =
+      "💧 ¡Busca la gota y haz clic sobre ella!";
+
+  }
+);
+
+
+// ======================================
+// PARPADEO AUTOMÁTICO
+// ======================================
+
+function parpadear() {
+
+  ernesto.classList.add(
+    "parpadeando"
+  );
+
+
+  setTimeout(() => {
+
+    ernesto.classList.remove(
+      "parpadeando"
+    );
+
+  }, 180);
+
+}
+
+
+setInterval(
+  parpadear,
+  3500
+);
+
+
+// ======================================
+// OCULTAR BURBUJA
+// ======================================
+
+setInterval(
+  () => {
+
+    if (
+      !speechSynthesis.speaking
+    ) {
+
+      burbuja.classList.remove(
+        "visible"
+      );
+
+    }
+
+  },
+  5000
+);
+
+
+// ======================================
+// MENSAJE INICIAL
+// ======================================
+
+setTimeout(
+  () => {
+
+    hablar(
+      "¡Hola! Soy Ernesto. ¡Bienvenido al páramo!"
+    );
+
+  },
+  1000
+);
