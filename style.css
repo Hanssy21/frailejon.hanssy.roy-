@@ -3084,3 +3084,130 @@ footer {
     font-size: 0.9rem;
   }
 }
+/* =========================================
+   CORRECCIÓN VISUAL DE ERNESTA PÉREZ
+========================================= */
+
+/* Mantener a Ernesta centrada en el escenario */
+#escenario #ernesta {
+  position: absolute;
+  z-index: 40;
+  left: 50%;
+  bottom: 75px;
+  width: 260px;
+  height: 420px;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+}
+
+/* Mostrar solo al personaje seleccionado */
+#escenario:not(.personaje-ernesta) #ernesta {
+  display: none;
+}
+
+#escenario.personaje-ernesta #ernesto {
+  display: none;
+}
+
+#escenario.personaje-ernesta #ernesta:not([hidden]) {
+  display: block;
+}
+
+#escenario #ernesto[hidden],
+#escenario #ernesta[hidden] {
+  display: none !important;
+}
+
+/* Animación al hablar: utiliza las clases reales del HTML */
+#ernesta.hablando .boca {
+  animation: bocaErnesta 0.2s infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes bocaErnesta {
+  from {
+    height: 24px;
+    border-bottom-width: 5px;
+  }
+
+  to {
+    height: 30px;
+    border-bottom-width: 7px;
+  }
+}
+
+/* Movimiento suave del cuerpo al hablar */
+#ernesta.hablando {
+  animation: movimientoErnesta 0.7s infinite alternate ease-in-out;
+}
+
+@keyframes movimientoErnesta {
+  from {
+    margin-left: 0;
+  }
+
+  to {
+    margin-left: 3px;
+  }
+}
+
+/* Saludo con el brazo derecho */
+#ernesta.saludando .brazoDerecho {
+  animation: saludoErnesta 0.4s infinite alternate;
+}
+
+@keyframes saludoErnesta {
+  to {
+    transform: rotate(-75deg);
+  }
+}
+
+/* Baile */
+#ernesta.bailando {
+  animation: baileErnesta 0.6s infinite alternate ease-in-out;
+}
+
+@keyframes baileErnesta {
+  from {
+    transform: translateX(-50%) rotate(-4deg);
+  }
+
+  to {
+    transform: translateX(-50%) rotate(5deg) translateY(-8px);
+  }
+}
+
+/* Parpadeo de los ojos */
+#ernesta.parpadeando .ojo {
+  animation: parpadeoErnesta 0.15s linear;
+}
+
+@keyframes parpadeoErnesta {
+  50% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* Adaptación para móviles */
+@media (max-width: 800px) {
+  #escenario #ernesta {
+    transform: translateX(-50%) scale(0.78);
+  }
+}
+
+@media (max-width: 520px) {
+  #escenario #ernesta {
+    transform: translateX(-50%) scale(0.65);
+  }
+}
+
+/* Respetar las preferencias de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  #ernesta.hablando,
+  #ernesta.hablando .boca,
+  #ernesta.saludando .brazoDerecho,
+  #ernesta.bailando,
+  #ernesta.parpadeando .ojo {
+    animation: none !important;
+  }
+}

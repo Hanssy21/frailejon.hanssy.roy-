@@ -213,6 +213,17 @@ function seleccionarPersonaje(nombre) {
   );
 }
 /* =========================================
+   EVENTOS DEL SELECTOR DE PERSONAJES
+========================================= */
+
+btnErnesto.addEventListener("click", () => {
+  seleccionarPersonaje("ernesto");
+});
+
+btnErnesta.addEventListener("click", () => {
+  seleccionarPersonaje("ernesta");
+});
+/* =========================================
    INFORMACIÓN
 ========================================= */
 
@@ -882,31 +893,21 @@ function crearGotaAgua() {
 
 
 /* =========================================
-   PARPADEO
+   PARPADEO DE ERNESTO Y ERNESTA
 ========================================= */
 
-setInterval(
-  () => {
+setInterval(() => {
+  const personaje =
+    personajeActivo === "ernesta" ? ernesta : ernesto;
 
-    ernesto.classList.add(
-      "parpadeando"
-    );
+  if (!personaje || personaje.hidden) return;
 
+  personaje.classList.add("parpadeando");
 
-    setTimeout(
-      () => {
-
-        ernesto.classList.remove(
-          "parpadeando"
-        );
-
-      },
-      180
-    );
-
-  },
-  3500
-);
+  setTimeout(() => {
+    personaje.classList.remove("parpadeando");
+  }, 180);
+}, 3500);
 
 
 /* =========================================
