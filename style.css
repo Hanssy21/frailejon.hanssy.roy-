@@ -2589,3 +2589,474 @@ footer {
   }
 
 }
+/* =====================================
+   SELECTOR DE PERSONAJES
+===================================== */
+
+.selectorPersonajes {
+  text-align: center;
+  margin: 12px 0 18px;
+}
+
+.selectorPersonajes p {
+  margin: 0 0 12px;
+  font-weight: bold;
+  color: #245d3a;
+}
+
+.opcionesPersonajes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.opcionesPersonajes button {
+  min-height: 46px;
+  padding: 11px 18px;
+  border: 2px solid #4e9b76;
+  border-radius: 16px;
+  background: white;
+  color: #245d3a;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background .2s, color .2s, transform .2s;
+}
+
+.opcionesPersonajes button:hover {
+  transform: translateY(-2px);
+}
+
+.opcionesPersonajes button.personajeSeleccionado {
+  color: white;
+  background: #246d47;
+  border-color: #246d47;
+}
+
+.opcionesPersonajes button:focus-visible {
+  outline: 3px solid #e5a93d;
+  outline-offset: 3px;
+}
+
+
+/* =====================================
+   VISIBILIDAD DE LOS PERSONAJES
+===================================== */
+
+.ernesta {
+  display: none;
+  position: absolute;
+  z-index: 40;
+  left: 50%;
+  bottom: 75px;
+  width: 260px;
+  height: 420px;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+}
+
+#escenario.personaje-ernesta #ernesto {
+  display: none;
+}
+
+#escenario.personaje-ernesta .ernesta {
+  display: block;
+}
+
+#escenario.personaje-ernesta .dialogo {
+  z-index: 70;
+}
+
+
+/* =====================================
+   CORONA FLORAL
+===================================== */
+
+.ernestaCorona {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 12px;
+  width: 236px;
+  height: 100px;
+}
+
+.ernestaCorona span {
+  position: absolute;
+  font-size: 42px;
+}
+
+.ernestaCorona span:nth-child(1) {
+  left: 5px;
+  top: 30px;
+  transform: rotate(-35deg);
+}
+
+.ernestaCorona span:nth-child(2) {
+  left: 45px;
+  top: 5px;
+  transform: rotate(-15deg);
+}
+
+.ernestaCorona span:nth-child(3) {
+  left: 90px;
+  top: -5px;
+}
+
+.ernestaCorona span:nth-child(4) {
+  left: 140px;
+  top: 5px;
+  transform: rotate(15deg);
+}
+
+.ernestaCorona span:nth-child(5) {
+  left: 180px;
+  top: 30px;
+  transform: rotate(35deg);
+}
+
+
+/* =====================================
+   CABEZA Y ROSTRO
+===================================== */
+
+.ernestaCabeza {
+  position: absolute;
+  z-index: 10;
+  top: 65px;
+  left: 38px;
+  width: 184px;
+  height: 170px;
+  border: 5px solid #6e613d;
+  border-radius: 48%;
+  background: radial-gradient(
+    circle at 50% 35%,
+    #e1ce8b,
+    #b9a15e 72%,
+    #82703f
+  );
+  box-shadow: 0 10px 20px #0003;
+}
+
+.ernestaPelo {
+  position: absolute;
+  top: -13px;
+  left: 25px;
+  width: 125px;
+  height: 38px;
+  border-radius: 50% 50% 20% 20%;
+  background: #476b3e;
+}
+
+.ernestaOjo {
+  position: absolute;
+  top: 61px;
+  width: 35px;
+  height: 43px;
+  border: 4px solid #554a2f;
+  border-radius: 50%;
+  background: #fffbea;
+}
+
+.ernestaOjo1 {
+  left: 35px;
+}
+
+.ernestaOjo2 {
+  right: 35px;
+}
+
+.ernestaOjo span {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 15px;
+  height: 22px;
+  border-radius: 50%;
+  background: #282821;
+}
+
+.ernestaOjo span::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+}
+
+.ernestaMejilla {
+  position: absolute;
+  top: 108px;
+  width: 24px;
+  height: 13px;
+  border-radius: 50%;
+  background: #df7d83;
+  opacity: .7;
+}
+
+.ernestaMejilla1 {
+  left: 13px;
+}
+
+.ernestaMejilla2 {
+  right: 13px;
+}
+
+.ernestaNariz {
+  position: absolute;
+  top: 105px;
+  left: 77px;
+  width: 24px;
+  height: 19px;
+  border-radius: 50%;
+  background: #b59a57;
+  border: 2px solid #746039;
+}
+
+.ernestaBoca {
+  position: absolute;
+  top: 119px;
+  left: 55px;
+  width: 65px;
+  height: 24px;
+  border-bottom: 5px solid #743d37;
+  border-radius: 0 0 45px 45px;
+}
+
+
+/* =====================================
+   CUERPO VEGETAL Y VESTIDO
+===================================== */
+
+.ernestaCuerpo {
+  position: absolute;
+  top: 225px;
+  left: 0;
+  width: 260px;
+  height: 190px;
+}
+
+.ernestaVestido {
+  position: absolute;
+  z-index: 2;
+  left: 57px;
+  top: 0;
+  width: 146px;
+  height: 125px;
+  overflow: hidden;
+  border: 4px solid #4c6938;
+  border-radius: 35px 35px 65px 65px;
+  background: linear-gradient(
+    90deg,
+    #477e49,
+    #8ab66a,
+    #477e49
+  );
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 25px;
+}
+
+.ernestaBrazo {
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  font-size: 35px;
+}
+
+.ernestaBrazo1 {
+  left: 12px;
+  transform: rotate(-25deg);
+}
+
+.ernestaBrazo2 {
+  right: 12px;
+  transform: rotate(25deg);
+}
+
+.ernestaPierna {
+  position: absolute;
+  top: 115px;
+  width: 28px;
+  height: 42px;
+  border-radius: 0 0 15px 15px;
+  background: #6c7746;
+}
+
+.ernestaPierna1 {
+  left: 88px;
+}
+
+.ernestaPierna2 {
+  right: 88px;
+}
+
+.ernestaZapato {
+  position: absolute;
+  top: 148px;
+  width: 48px;
+  height: 22px;
+  border-radius: 50%;
+  background: #42352b;
+}
+
+.ernestaZapato1 {
+  left: 62px;
+}
+
+.ernestaZapato2 {
+  right: 62px;
+}
+
+
+/* =====================================
+   ANIMACIONES DE ERNESTA
+===================================== */
+
+.ernesta.hablando .ernestaBoca {
+  animation: ernestaHabla .2s infinite alternate;
+}
+
+@keyframes ernestaHabla {
+  to {
+    height: 30px;
+    background: #8b423b;
+  }
+}
+
+.ernesta.saludando .ernestaBrazo2 {
+  animation: ernestaSaluda .4s infinite alternate;
+}
+
+@keyframes ernestaSaluda {
+  to {
+    transform: rotate(-45deg) translateY(-12px);
+  }
+}
+
+.ernesta.bailando {
+  animation: ernestaBaila .6s infinite alternate ease-in-out;
+}
+
+@keyframes ernestaBaila {
+  to {
+    transform: translateX(-50%) rotate(5deg) translateY(-8px);
+  }
+}
+
+
+/* =====================================
+   AJUSTES PARA CELULARES
+===================================== */
+
+@media (max-width: 800px) {
+  .ernesta {
+    transform: translateX(-50%) scale(.78);
+    transform-origin: bottom center;
+  }
+}
+
+@media (max-width: 520px) {
+  .opcionesPersonajes {
+    gap: 8px;
+  }
+
+  .opcionesPersonajes button {
+    padding: 10px 12px;
+    font-size: .9rem;
+  }
+
+  .ernesta {
+    transform: translateX(-50%) scale(.65);
+    transform-origin: bottom center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ernesta.hablando .ernestaBoca,
+  .ernesta.saludando .ernestaBrazo2,
+  .ernesta.bailando {
+    animation: none;
+  }
+}
+/* =========================================
+   ALERTA VISUAL DEL FRACKING
+========================================= */
+
+#escenario.riesgo-fracking .pozo {
+  filter: drop-shadow(0 0 8px #ff563f);
+  animation: pozoEnAlerta 1.5s infinite alternate;
+}
+
+#escenario.riesgo-fracking .tuberia {
+  box-shadow: 0 0 12px #ff563f;
+}
+
+#escenario.riesgo-fracking .fracturas i {
+  background: #ff3025;
+  box-shadow: 0 0 12px #ff3025;
+  animation: fracturaAlerta 0.8s infinite alternate;
+}
+
+#escenario.riesgo-fracking .fracturas i:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+#escenario.riesgo-fracking .fracturas i:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+#escenario.riesgo-fracking .alertaPozo {
+  filter: drop-shadow(0 0 8px #ff3025);
+  transform: scale(1.15);
+}
+
+@keyframes pozoEnAlerta {
+  from {
+    filter: drop-shadow(0 0 3px #ff563f);
+  }
+
+  to {
+    filter: drop-shadow(0 0 15px #ff3025);
+  }
+}
+
+@keyframes fracturaAlerta {
+  from {
+    opacity: 0.65;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mantener accesibles los controles en celulares */
+.selectorPersonajes button,
+.controles button,
+.menu button {
+  touch-action: manipulation;
+}
+
+@media (max-width: 520px) {
+  .selectorPersonajes {
+    padding: 12px 4px;
+  }
+
+  .opcionesPersonajes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .opcionesPersonajes button {
+    min-width: 0;
+    padding: 12px 8px;
+    font-size: 0.9rem;
+  }
+}

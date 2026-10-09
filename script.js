@@ -11,6 +11,9 @@ const pagina =
 const ernesto =
   document.getElementById("ernesto");
 
+const ernesta = 
+  document.getElementById("ernesta");
+
 const dialogo =
   document.getElementById("dialogo");
 
@@ -67,6 +70,15 @@ const btnExplorar =
 const btnMensajeFinal =
   document.getElementById("btnMensajeFinal");
 
+const btnErnesto = 
+  document.getElementById("btnErnesto");
+
+const btnErnesta = 
+  document.getElementById("btnErnesta");
+
+const btnMision = 
+  document.getElementById("btnMision");
+
 
 /* =========================================
    VARIABLES
@@ -87,70 +99,110 @@ let lluviaActiva =
 let hablando =
   false;
 
+let personajeActivo = "ernesto";
+let indiceMision = 0;
+
 
 /* =========================================
    HABLAR
 ========================================= */
 
 function hablar(texto) {
+  textoDialogo.textContent = texto;
+  dialogo.classList.add("visible");
 
-  textoDialogo.textContent =
-    texto;
-
-  dialogo.classList.add(
-    "visible"
-  );
-
-
-  if (
-    "speechSynthesis"
-    in window
-  ) {
-
+  // Detener la voz anterior.
+  if ("speechSynthesis" in window) {
     speechSynthesis.cancel();
-
-    const voz =
-      new SpeechSynthesisUtterance(
-        texto
-      );
-
-    voz.lang =
-      "es-CO";
-
-    voz.rate =
-      .88;
-
-    voz.pitch =
-      1.15;
-
-    hablando =
-      true;
-
-    ernesto.classList.add(
-      "hablando"
-    );
-
-    voz.onend =
-      () => {
-
-        hablando =
-          false;
-
-        ernesto.classList.remove(
-          "hablando"
-        );
-
-      };
-
-    speechSynthesis.speak(
-      voz
-    );
-
   }
 
+  // Detener las animaciones de habla anteriores.
+  ernesto.classList.remove("hablando", "saludando");
+  ernesta.classList.remove("hablando", "saludando");
+
+  // Elegir el personaje activo.
+  const personaje =
+    personajeActivo === "ernesta" ? ernesta : ernesto;
+
+  personaje.classList.add("hablando");
+
+  // Mostrar el diálogo aunque no haya voz disponible.
+  if (!("speechSynthesis" in window)) {
+    return;
+  }
+
+  const voz = new SpeechSynthesisUtterance(texto);
+
+  voz.lang = "es-CO";
+  voz.rate = 0.88;
+  voz.pitch = personajeActivo === "ernesta" ? 1.12 : 1.05;
+
+  voz.onend = () => {
+    personaje.classList.remove("hablando");
+    hablando = false;
+  };
+
+  voz.onerror = () => {
+    personaje.classList.remove("hablando");
+    hablando = false;
+  };
+
+  hablando = true;
+  speechSynthesis.speak(voz);
+}
+/* =========================================
+   SELECCION DE PERSONAJE 
+========================================= */
+function seleccionarPersonaje(nombre) {
+  personajeActivo = nombre;
+
+  escenario.classList.toggle(
+    "personaje-ernesta",
+    nombre === "ernesta"
+  );
+
+  btnErnesto.classList.toggle(
+    "personajeSeleccionado",
+    nombre === "ernesto"
+  );
+
+  btnErnesta.classList.toggle(
+    "personajeSeleccionado",
+    nombre === "ernesta"
+  );
+
+  btnErnesto.setAttribute(
+    "aria-pressed",
+    String(nombre === "ernesto")
+  );
+
+  btnErnesta.setAttribute(
+    "aria-pressed",
+    String(nombre === "ernesta")
+  );
+
+  hablar(
+    nombre === "ernesta"
+      ? "¡Soy Frilejona Ernesta Pérez! " +
+        "No podemos ignorar lo que ocurre bajo nuestros pies. " +
+        "El fracking utiliza fluidos a presión para fracturar rocas, " +
+        "y sus operaciones pueden generar riesgos para el agua, " +
+        "el suelo y los ecosistemas. ¡El páramo necesita protección!"
+      : "¡Soy Ernesto Pérez, guardián del páramo! " +
+        "Mira ese pozo bajo la montaña. El fracking puede consumir " +
+        "agua, producir residuos y generar riesgos de fugas " +
+        "o contaminación si no se controla adecuadamente. " +
+        "¡No podemos poner en riesgo nuestras fuentes de vida!"
+  );
 }
 
+btnErnesto.addEventListener("click", () => {
+  seleccionarPersonaje("ernesto");
+});
 
+btnErnesta.addEventListener("click", () => {
+  seleccionarPersonaje("ernesta");
+});
 /* =========================================
    INFORMACIÓN
 ========================================= */
@@ -173,6 +225,129 @@ function mostrarInfo(
     icono;
 
 }
+// PEGA AQUÍ EL BLOQUE DE MISIONES AMBIENTALES
+const misionesAmbientales = [
+  {
+    titulo: "💧 Misión 1: El agua bajo nuestros pies",
+    icono: "💧",
+    mensaje:
+      "¡Observa el agua subterránea! Las operaciones de fracking " +
+      "requieren agua y pueden generar fluidos residuales. " +
+      "Una fuga o una gestión inadecuada puede poner en riesgo " +
+      "el suelo y los recursos hídricos. ¡Proteger el agua " +
+      "del páramo debe ser una prioridad!",
+    ernesta:
+      "¡El agua no es un recurso desechable! Si se contamina, " +
+      "las comunidades y los ecosistemas pueden sufrir las consecuencias. " +
+      "Debemos exigir estudios hidrogeológicos, monitoreo y controles " +
+      "antes de permitir actividades que puedan ponerla en riesgo."
+  },
+  {
+    titulo: "🪨 Misión 2: Las fracturas de la roca",
+    icono: "🪨",
+    mensaje:
+      "¡Mira las fracturas rojas junto al pozo! Representan " +
+      "las fracturas que se buscan generar en determinadas rocas. " +
+      "El riesgo depende de la geología, las fallas, la integridad " +
+      "de los pozos y el manejo de los fluidos. Si estos procesos " +
+      "se controlan mal, pueden afectar el entorno.",
+    ernesta:
+      "¡La montaña no es un laboratorio sin consecuencias! " +
+      "Las fracturas y las fallas geológicas deben estudiarse " +
+      "cuidadosamente. No todas las fracturas contaminan el agua, " +
+      "pero ignorar la geología y los posibles caminos de migración " +
+      "sería irresponsable."
+  },
+  {
+    titulo: "⚠️ Misión 3: Residuos y sustancias",
+    icono: "⚠️",
+    mensaje:
+      "El fracking genera aguas residuales que pueden contener " +
+      "sales, sustancias utilizadas en la operación y componentes " +
+      "procedentes de la formación rocosa. Un almacenamiento, " +
+      "transporte o tratamiento deficiente puede causar impactos " +
+      "en el suelo y el agua. ¡Los residuos deben manejarse con rigor!",
+    ernesta:
+      "¡Los residuos no desaparecen por enterrarlos o esconderlos! " +
+      "Necesitamos conocer su composición, su tratamiento, " +
+      "su destino final y los planes de respuesta ante derrames. " +
+      "El agua y la biodiversidad merecen una protección real."
+  },
+  {
+    titulo: "🏢 Misión 4: Empresas y responsabilidad",
+    icono: "🏢",
+    mensaje:
+      "Las multinacionales y demás empresas que desarrollan " +
+      "proyectos extractivos pueden obtener beneficios económicos, " +
+      "pero deben cumplir las normas, prevenir daños y responder " +
+      "por sus obligaciones ambientales. Investiga los permisos, " +
+      "los estudios publicados y los mecanismos de vigilancia.",
+    ernesta:
+      "¡Los intereses económicos no deben estar por encima " +
+      "de la protección ambiental! Las empresas deben rendir cuentas, " +
+      "transparentar los riesgos y cumplir sus obligaciones. " +
+      "Evaluemos las pruebas de cada proyecto y exijamos controles " +
+      "independientes y participación de las comunidades."
+  },
+  {
+    titulo: "🛡️ Misión 5: Defender el páramo",
+    icono: "🛡️",
+    mensaje:
+      "Los páramos son ecosistemas estratégicos para la regulación " +
+      "del agua y albergan una biodiversidad adaptada a condiciones " +
+      "de alta montaña. Frente a proyectos que puedan afectarlos, " +
+      "se necesitan estudios rigurosos, prevención, vigilancia " +
+      "y decisiones que respeten las normas de protección aplicables.",
+    ernesta:
+      "¡Defender el páramo es defender la vida! No debemos esperar " +
+      "a que ocurra un daño para preguntar cómo se protegerá el agua. " +
+      "La prevención, la ciencia y la participación ciudadana " +
+      "son fundamentales para cuidar este ecosistema."
+  }
+];
+
+btnMision.addEventListener("click", () => {
+  const mision = misionesAmbientales[indiceMision];
+
+  // Abrir el subsuelo y activar el escenario de riesgo.
+  escenario.classList.add("explorando", "riesgo-fracking");
+
+  // Actualizar la información educativa.
+  mostrarInfo(
+    mision.titulo,
+    mision.mensaje,
+    mision.icono
+  );
+
+  // Mostrar la alerta ambiental existente.
+  alerta.style.display = "flex";
+
+  textoAlerta.textContent =
+    "Riesgo ambiental potencial: los impactos dependen " +
+    "de las condiciones geológicas, el diseño del proyecto, " +
+    "la operación y el manejo de sus residuos. " +
+    "La prevención y la vigilancia son esenciales.";
+
+  // Cada personaje aporta su propio diálogo.
+  hablar(
+    personajeActivo === "ernesta"
+      ? mision.ernesta
+      : mision.mensaje
+  );
+
+  // Desplazar la vista hacia el escenario para ver el pozo.
+  escenario.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+  indiceMision = (indiceMision + 1) % misionesAmbientales.length;
+
+  btnMision.textContent =
+    indiceMision === 0
+      ? "🔎 Repetir misiones"
+      : `🔎 Siguiente misión (${indiceMision + 1}/${misionesAmbientales.length})`;
+});
 
 
 /* =========================================
