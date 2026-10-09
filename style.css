@@ -2644,7 +2644,7 @@ footer {
    VISIBILIDAD DE LOS PERSONAJES
 ===================================== */
 
-.ernesta {
+#ernesta {
   display: none;
   position: absolute;
   z-index: 40;
@@ -2656,19 +2656,43 @@ footer {
   transform-origin: bottom center;
 }
 
+/* Mostrar Ernesto por defecto */
+#escenario:not(.personaje-ernesta) #ernesto {
+  display: block;
+}
+
+/* Mostrar solo a Ernesta cuando se selecciona */
 #escenario.personaje-ernesta #ernesto {
   display: none;
 }
 
-#escenario.personaje-ernesta .ernesta {
+#escenario.personaje-ernesta #ernesta:not([hidden]) {
   display: block;
 }
 
-#escenario.personaje-ernesta .dialogo {
+/* Respetar el atributo hidden */
+#escenario #ernesto[hidden],
+#escenario #ernesta[hidden] {
+  display: none !important;
+}
+
+/* Diálogo por encima de los personajes */
+#escenario .dialogo {
   z-index: 70;
 }
 
+/* Adaptación a móviles */
+@media (max-width: 800px) {
+  #ernesta {
+    transform: translateX(-50%) scale(.78);
+  }
+}
 
+@media (max-width: 520px) {
+  #ernesta {
+    transform: translateX(-50%) scale(.65);
+  }
+}
 /* =====================================
    CORONA FLORAL
 ===================================== */

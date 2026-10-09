@@ -108,53 +108,78 @@ let indiceMision = 0;
 ========================================= */
 
 function hablar(texto) {
-  textoDialogo.textContent = texto;
-  dialogo.classList.add("visible");
-
-  // Detener la voz anterior.
-  if ("speechSynthesis" in window) {
-    speechSynthesis.cancel();
-  }
-
-  // Detener las animaciones de habla anteriores.
-  ernesto.classList.remove("hablando", "saludando");
-  ernesta.classList.remove("hablando", "saludando");
-
-  // Elegir el personaje activo.
-  const personaje =
-    personajeActivo === "ernesta" ? ernesta : ernesto;
-
-  personaje.classList.add("hablando");
-
-  // Mostrar el diálogo aunque no haya voz disponible.
-  if (!("speechSynthesis" in window)) {
+  if (!textoDialogo || !dialogo) {
+    console.error("No se encontraron los elementos del diálogo.");
     return;
   }
 
-  const voz = new SpeechSynthesisUtterance(texto);
+  textoDialogo.textContent = texto;
+  dialogo.classList.add("visible");
 
-  voz.lang = "es-CO";
-  voz.rate = 0.88;
-  voz.pitch = personajeActivo === "ernesta" ? 1.12 : 1.05;
+  // Actualizar el nombre que aparece en la burbuja.
+  const nombreDialogo = dialogo.querySelector("strong");
 
-  voz.onend = () => {
-    personaje.classList.remove("hablando");
-    hablando = false;
-  };
+  if (nombreDialogo) {
+    nombreDialogo.textContent =
+      personajeActivo === "ernesta"
+        ? "Frilejona Ernesta Pérez"
+        : "Ernesto Pérez";
+  }
 
-  voz.onerror = () => {
-    personaje.classList.remove("hablando");
-    hablando = false;
-  };
+  if ("speechSynthesis" in window) {
+    speechSynthesis.cancel();
 
-  hablando = true;
-  speechSynthesis.speak(voz);
+    const voz = new SpeechSynthesisUtterance(texto);
+
+    voz.lang = "es-CO";
+    voz.rate = 0.88;
+    voz.pitch = personajeActivo === "ernesta" ? 1.3 : 1.05;
+
+    hablando = true;
+
+    const personaje = personajeActivo === "ernesta"
+      ? document.getElementById("ernesta")
+      : document.getElementById("ernesto");
+
+    if (personaje) {
+      personaje.classList.add("hablando");
+    }
+
+    voz.onend = () => {
+      hablando = false;
+
+      if (personaje) {
+        personaje.classList.remove("hablando");
+      }
+    };
+
+    voz.onerror = () => {
+      hablando = false;
+
+      if (personaje) {
+        personaje.classList.remove("hablando");
+      }
+    };
+
+    speechSynthesis.speak(voz);
+  }
 }
 /* =========================================
    SELECCION DE PERSONAJE 
 ========================================= */
 function seleccionarPersonaje(nombre) {
   personajeActivo = nombre;
+  document.getElementById("nombrePersonaje").textContent =
+  nombre === "ernesta"
+    ? "Frilejona Ernesta Pérez"
+    : "Ernesto Pérez";
+
+  const ernestoElemento = document.getElementById("ernesto");
+  const ernestaElemento = document.getElementById("ernesta");
+
+  // Mostrar solamente el personaje seleccionado
+  ernestoElemento.hidden = nombre !== "ernesto";
+  ernestaElemento.hidden = nombre !== "ernesta";
 
   escenario.classList.toggle(
     "personaje-ernesta",
@@ -183,26 +208,10 @@ function seleccionarPersonaje(nombre) {
 
   hablar(
     nombre === "ernesta"
-      ? "¡Soy Frilejona Ernesta Pérez! " +
-        "No podemos ignorar lo que ocurre bajo nuestros pies. " +
-        "El fracking utiliza fluidos a presión para fracturar rocas, " +
-        "y sus operaciones pueden generar riesgos para el agua, " +
-        "el suelo y los ecosistemas. ¡El páramo necesita protección!"
-      : "¡Soy Ernesto Pérez, guardián del páramo! " +
-        "Mira ese pozo bajo la montaña. El fracking puede consumir " +
-        "agua, producir residuos y generar riesgos de fugas " +
-        "o contaminación si no se controla adecuadamente. " +
-        "¡No podemos poner en riesgo nuestras fuentes de vida!"
+      ? "¡Soy Frilejona Ernesta Pérez! No podemos ignorar lo que ocurre bajo nuestros pies. El fracking utiliza fluidos a presión para fracturar rocas y sus operaciones pueden generar riesgos para el agua, el suelo y los ecosistemas. ¡El páramo necesita protección!"
+      : "¡Soy Ernesto Pérez, guardián del páramo! Mira ese pozo bajo la montaña. El fracking puede consumir agua, producir residuos y generar riesgos de contaminación. Las empresas que desarrollan estas actividades deben cumplir las normas ambientales y prevenir los daños. ¡Protejamos nuestras fuentes de vida!"
   );
 }
-
-btnErnesto.addEventListener("click", () => {
-  seleccionarPersonaje("ernesto");
-});
-
-btnErnesta.addEventListener("click", () => {
-  seleccionarPersonaje("ernesta");
-});
 /* =========================================
    INFORMACIÓN
 ========================================= */
